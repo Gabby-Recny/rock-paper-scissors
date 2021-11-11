@@ -61,3 +61,7 @@ h5 {
   background-color: white;
   border-radius: 12px;
 }
+
+.scissors {
+  background-color: transparent;
+}
