@@ -53,20 +53,3 @@ accessComputerChoice();
 //       console.log(userChoice)
 //   }
 // }
-
-
-
-
-function playGame() {
-  if (userChoice === computerChoice ) {
-    console.log("it's a draw")
-  } else if (userChoice === "rock" && computerChoice === "scissors")  {
-    console.log("User wins")
-  } else if (userChoice === "paper" && computerChoice === "rock") {
-     console.log("User  wins");
-  } else if (userChoice === "scissors" && computerChoice === "paper") {
-     console.log("User wins")
-  } else {
-     console.log("Computer wins")
-  }
-}
