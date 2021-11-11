@@ -65,3 +65,21 @@ function determineClassicWinner() {
      console.log("Computer wins")
   }
 }
+
+function determineDifficultWinner() {
+  if (userChoice === computerChoice) {
+    console.log("it's a draw")
+  } else if (userChoice === "rock" && (computerChoice === "scissors" || computerChoice ===  "lizard")) {
+    console.log("User wins")
+  } else if (userChoice === "paper" && (computerChoice === "rock" || computerChoice === "alien")) {
+    console.log("User  wins");
+  } else if (userChoice === "scissors" && (computerChoice === "paper" || computerChoice === "lizard")) {
+    console.log("User wins")
+  } else if (userChoice === "lizard" && (computerChoice === "paper" || computerChoice === "alien")) {
+    console.log("User wins")
+  } else if (userChoice === "alien" && (computerChoice === "scissors" || computerChoice === "rock")) {
+    console.log("User wins")
+  } else {
+    console.log("Computer wins")
+  }
+}
