@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Coiny&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h2>Cat Cat Cat</h2>
+      <h4>An Alternative Take on Rock Paper Scissors</h4>
+    </header>
+    <aside class="left-side">
+      <h5>Human</h5>
+      <h5>Wins:0</h5>
+      <button class="change-game-btn" id="changeGameBtn">Change Game?</button>
+    </aside>
+    <main>
+      <section class="game-board"  id="gameBoard">
+        <button class="game-choice-btn" id="classicChoice">
+          <div class="game-options">
+            <p class="game-title">Classic Choice</p>
+            <p>Rock > scissors</p>
+  	        <p>Scissors > Paper</p>
+  	        <p>Paper > Rock</p>
+          </div>
+        </button>
+        <button class="game-choice-btn" id="difficultChoice">
+          <div class="game-options">
+            <p class="game-title">Difficult Choice</p>
+            <p>Rock > Scissors & Lizards</p>
+            <p>Paper > Rock & Alien</p>
+            <p>Scissors > Paper & Lizard</p>
+            <p>Lizard > Paper & Alien</p>
+            <p>Alien > Scissors & Rock</p>
+          </div>
+        </button>
+        <div class="classic-player-icons hidden" id="classicPlayerIcons">
+          <input type="image" src="assets/black-and-white-scissors.png" alt="scissors">
+          <input type="image" src="assets/happy-paper.png" alt="paper">
+          <input type="image" src="assets/rock.png" alt="rock">
+        </div>
+        <div class="difficult-player-icons hidden" id="difficultPlayerIcons">
+          <input type="image" class="scissors" src="assets/black-and-white-scissors.png" alt="scissors">
+          <input type="image" src="assets/happy-paper.png" alt="paper">
+          <input type="image" src="assets/rock.png" alt="rock">
+          <input type="image" src="assets/flat-lizard.png" alt="lizards">
+          <input type="image" src="assets/happy-alien.png" alt="alien">
+        </div>
+      </section>
+    </main>
+    <aside class="right-side">
+      <h5>Computer</h5>
+      <h5>Wins:0</h5>
+    </aside>
+    <script src="Player.js"></script>
+    <script src="Game.js"></script>
+    <script src="main.js"></script>
+    <script src="game.js"></script>
+  </body>
+  </html>

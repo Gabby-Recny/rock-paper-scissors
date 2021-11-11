@@ -1,0 +1,63 @@
+body {
+  width: 100%;
+  height: 100%;
+  background-color:red;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Coiny', cursive;
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "aside-left main aside-right";
+}
+
+header {
+  grid-area: header;
+  align-items: center;
+  font-size: 193%;
+}
+
+main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-side,
+.right-side {
+  font-size: 26px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 411px;
+}
+
+header,
+h4,
+h5 {
+  color: white;
+  margin: auto;
+  text-align: center;
+}
+
+h2 {
+  font-size: 43px;
+  margin-top: 25px;
+}
+
+h4 {
+  font-size: 21px;
+  margin-bottom: 20px;
+}
+
+h5 {
+  font-size: 17px;
+}
+
+.game-board {
+  width: 85%;
+  height: 85%;
+  background-color: white;
+  border-radius: 12px;
+}
