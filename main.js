@@ -4,6 +4,7 @@ var scissors = document.getElementById("scissors");
 var classicIcons = document.getElementById("classicPlayerIcons");
 var classicChoiceBtn = document.getElementById("classicChoice");
 var difficultChoiceBtn = document.getElementById("difficultChoice")
+var changeGameBtn = document.getElementById("changeGameBtn")
 
 var computerChoice;
 var userChoice;
@@ -48,6 +49,7 @@ function selectClassicGame() {
   classicChoiceBtn.classList.add("hidden");
   difficultChoiceBtn.classList.add("hidden");
   classicIcons.classList.remove("hidden");
+  changeGameBtn.classList.remove("hidden");
 }
 
 function determineClassicWinner() {
