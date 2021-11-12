@@ -17,6 +17,8 @@ var computerPlayer = new Player ("computer",  "laptop", "macBookPro");
 rock.addEventListener("click", function() {
   userChoice = rock.id;
   console.log(userChoice)
+  scissors.classList.add("hidden");
+  paper.classList.add("hidden");
   accessComputerChoice()
   game.determineClassicWinner()
 })
@@ -24,12 +26,16 @@ rock.addEventListener("click", function() {
 scissors.addEventListener("click", function() {
   userChoice = scissors.id;
   console.log(userChoice)
+  rock.classList.add("hidden");
+  paper.classList.add("hidden");
   accessComputerChoice()
   game.determineClassicWinner()
 });
 
 paper.addEventListener("click", function() {
   userChoice = paper.id;
+  scissors.classList.add("hidden");
+  rock.classList.add("hidden");
   console.log(userChoice)
   accessComputerChoice()
   game.determineClassicWinner()
