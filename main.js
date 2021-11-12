@@ -114,6 +114,8 @@ function playClassicGame() {
   classicIcons.classList.remove("hidden");
   changeGameBtn.classList.remove("hidden");
 
+  humanAvatar.takeTurn(fighter);
+  robotAvatar.takeTurn(fighter)
   currentGame.determineClassicWinner()
 }
 
@@ -124,5 +126,7 @@ function playDifficultGame() {
   difficultIcons.classList.remove("hidden");
   changeGameBtn.classList.remove("hidden");
 
+  humanAvatar.takeTurn(fighter);
+  robotAvatar.takeTurn(fighter)
   currentGame.determineDifficultWinner();
 }

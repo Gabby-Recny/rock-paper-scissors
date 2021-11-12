@@ -15,6 +15,7 @@ class Player {
     var storedWin = localStorage.getItem(`${this.id}`);
     var parsedWin = JSON.parse(storedWin);
   }
+  //How to assign  the  fighter to selected  element
   takeTurn(fighter) {
     var classicChoices = ["rock", "paper", "scissors"];
     var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
