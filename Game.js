@@ -10,10 +10,10 @@ class Game {
   chooseGame(){
     if (event.target.id === "classicChoice") {
       this.gameType = "classic";
-      //Display  Classic  Game  Board function
+      playClassicGame()
     } else if (event.target.id === "difficultChoice") {
       this.gameType = "difficult";
-      //DIsplay Classic Game Board function
+      playDifficultGame()
     }
   }
   determineClassicWinner() {

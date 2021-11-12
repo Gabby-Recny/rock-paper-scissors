@@ -18,7 +18,9 @@ class Player {
   takeTurn(fighter) {
     var classicChoices = ["rock", "paper", "scissors"];
     var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
+
     if (this.name === "Human") {
+    //How  to make sure event.target.id is  an icon
       this.selectedFighter = event.target.id;
     } else if (this.name === "Computer" &&  game.gameType === "classic") {
       this.selectedFighter = classicChoices[getRandomIndex(classicChoices)]
