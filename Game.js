@@ -6,6 +6,15 @@ class Game {
     this.humanPlayer = new Player("Human", "Face", "Player One");
     this.roboPlayer = new  Player ("Computer", "Laptop",  "Player Two");
   }
+  chooseGame(){
+    if (classicGameBtn.click) {
+      this.gameType = "classic";
+      console.log(this.gameType)
+    } else if (difficultGameBtn.click) {
+      this.gameType = "difficult";
+      console.log(this.gameType)
+    }
+  }
   determineClassicWinner() {
     if (userChoice === computerChoice ) {
       console.log("it's a draw")
