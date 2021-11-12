@@ -8,34 +8,46 @@ var changeGameBtn = document.getElementById("changeGameBtn")
 
 var computerChoice;
 var userChoice;
+// var game = new Game(gameType);
+var game = new Game();
 
-classicChoiceBtn.addEventListener("click", selectClassicGame)
+var humanPlayer = new Player ("human", "smiley  face", "fox");
+var computerPlayer = new Player ("computer",  "laptop", "macBookPro");
 
 rock.addEventListener("click", function() {
   userChoice = rock.id;
   console.log(userChoice)
   accessComputerChoice()
-  determineClassicWinner()
+  game.determineClassicWinner()
 })
 
 scissors.addEventListener("click", function() {
   userChoice = scissors.id;
   console.log(userChoice)
   accessComputerChoice()
-  determineClassicWinner()
+  game.determineClassicWinner()
 });
 
 paper.addEventListener("click", function() {
   userChoice = paper.id;
   console.log(userChoice)
   accessComputerChoice()
-  determineClassicWinner()
+  game.determineClassicWinner()
 })
+
+classicChoiceBtn.addEventListener("click", selectClassicGame)
 
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
+
+
+// function chooseGame() {
+//   if (classicGame === selected) {
+//     game.gameType = Classic
+//   }
+// }
 
 
 function accessComputerChoice() {
@@ -52,34 +64,14 @@ function selectClassicGame() {
   changeGameBtn.classList.remove("hidden");
 }
 
-function determineClassicWinner() {
-  if (userChoice === computerChoice ) {
-    console.log("it's a draw")
-  } else if (userChoice === "rock" && computerChoice === "scissors")  {
-    console.log("User wins")
-  } else if (userChoice === "paper" && computerChoice === "rock") {
-     console.log("User  wins");
-  } else if (userChoice === "scissors" && computerChoice === "paper") {
-     console.log("User wins")
-  } else {
-     console.log("Computer wins")
-  }
-}
 
-function determineDifficultWinner() {
-  if (userChoice === computerChoice) {
-    console.log("it's a draw")
-  } else if (userChoice === "rock" && (computerChoice === "scissors" || computerChoice ===  "lizard")) {
-    console.log("User wins")
-  } else if (userChoice === "paper" && (computerChoice === "rock" || computerChoice === "alien")) {
-    console.log("User  wins");
-  } else if (userChoice === "scissors" && (computerChoice === "paper" || computerChoice === "lizard")) {
-    console.log("User wins")
-  } else if (userChoice === "lizard" && (computerChoice === "paper" || computerChoice === "alien")) {
-    console.log("User wins")
-  } else if (userChoice === "alien" && (computerChoice === "scissors" || computerChoice === "rock")) {
-    console.log("User wins")
-  } else {
-    console.log("Computer wins")
+
+function updateWins() {
+  if (determineClassicWinner() === "User wins") {
+    playerOne.wins++;
+    playerOne.saveWinsToStorage()
+    var playerWins = playerOne.retrieveWinsFromStorage()
+    "h5/winsHTML".innerText = playerWins.wins
+
   }
 }
