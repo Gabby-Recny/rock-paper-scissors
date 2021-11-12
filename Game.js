@@ -3,10 +3,8 @@ class Game {
     this.hasWinner = false;
     this.isDraw = false;
     this.gameType = gameType
-    // this.score =  {
-    //   human: 0,
-    //   computer: 0,
-    // }
+    this.humanPlayer = new Player("Human", "Face", "Player One");
+    this.roboPlayer = new  Player ("Computer", "Laptop",  "Player Two");
   }
   determineClassicWinner() {
     if (userChoice === computerChoice ) {
