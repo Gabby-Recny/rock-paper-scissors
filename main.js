@@ -14,11 +14,15 @@ var game = new Game();
 var humanPlayer = new Player ("human", "smiley  face", "fox");
 var computerPlayer = new Player ("computer",  "laptop", "macBookPro");
 
+classicChoiceBtn.addEventListener("click", selectClassicGame)
+
+
 rock.addEventListener("click", function() {
   userChoice = rock.id;
   console.log(userChoice)
   scissors.classList.add("hidden");
   paper.classList.add("hidden");
+  displayUserChoice()
   accessComputerChoice()
   game.determineClassicWinner()
 })
@@ -41,7 +45,6 @@ paper.addEventListener("click", function() {
   game.determineClassicWinner()
 })
 
-classicChoiceBtn.addEventListener("click", selectClassicGame)
 
 
 function getRandomIndex(array) {
@@ -60,7 +63,35 @@ function accessComputerChoice() {
   var choices = ["rock", "paper", "scissors"];
   computerChoice = choices[getRandomIndex(choices)]
   console.log(computerChoice)
+  displayComputerChoice()
 }
+
+function displayComputerChoice() {
+  if (computerChoice === "rock") {
+    classicIcons.innerHTML += `
+    ${rock}`
+  } else if (computerChoice === "paper") {
+    classicIcons.innerHTML += `
+    ${paper}`
+  }  else if (computerChoice === "scissors") {
+    classicIcons.innerHTML += `
+    ${scissors}`
+  }
+}
+
+function displayUserChoice() {
+  if (userChoice === "rock") {
+    classicIcons.innerHTML += `
+    ${rock}`
+  } else if (userChoice === "paper") {
+    classicIcons.innerHTML += `
+    ${paper}`
+  }  else if (userChoice === "scissors") {
+    classicIcons.innerHTML += `
+    ${scissors}`
+  }
+}
+
 
 
 function selectClassicGame() {
@@ -73,11 +104,16 @@ function selectClassicGame() {
 
 
 function updateWins() {
-  if (determineClassicWinner() === "User wins") {
+  if (determineClassicWinner() === "User wins" ||     determineDifficultWinner() === "User wins") {
     playerOne.wins++;
     playerOne.saveWinsToStorage()
-    var playerWins = playerOne.retrieveWinsFromStorage()
-    "h5/winsHTML".innerText = playerWins.wins
+    var playerOneWins = playerOne.retrieveWinsFromStorage()
+    "Wins:0 in  HTML".innerText = playerWins.wins
+  } else if (determineClassicWinner() ===  "Computer wins" ||     determineDifficultWinner() === "User wins") {
+    playerTwo.wins++;
+    playerTwo.saveWinsToStorage()
+    var  playerTwoWins = playerTwo.retrieveWinsFromStorage();
+    "Wins:0 in  HTML".innerText = playerTwoWins.wins
 
   }
 }
