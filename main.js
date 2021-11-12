@@ -32,6 +32,7 @@ scissors.addEventListener("click", function() {
   console.log(userChoice)
   rock.classList.add("hidden");
   paper.classList.add("hidden");
+  displayUserChoice()
   accessComputerChoice()
   game.determineClassicWinner()
 });
@@ -41,6 +42,7 @@ paper.addEventListener("click", function() {
   scissors.classList.add("hidden");
   rock.classList.add("hidden");
   console.log(userChoice)
+  displayUserChoice()
   accessComputerChoice()
   game.determineClassicWinner()
 })
