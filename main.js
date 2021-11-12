@@ -17,17 +17,10 @@ var userChoice;
 // humanAvatar.takeTurn(rock)
 // robotAvatar.takeTurn(scissors)
 
-//Using only the game buttons does not work. Difficult level does not log id but  "classic". COnsider event delegation.
 gameBoard.addEventListener("click", function() {
   game.chooseGame()
-  game = new Game ("classic")
-//function to display Game Board and instantiate players
 })
-difficultGameBtn.addEventListener("click", function() {
-  game.chooseGame()
-  game = new Game("difficult")
-//function to display Game Board
-})
+
 
 
 rock.addEventListener("click", function() {
@@ -59,8 +52,6 @@ paper.addEventListener("click", function() {
   accessComputerChoice()
   game.determineClassicWinner()
 })
-
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);

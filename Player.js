@@ -16,6 +16,8 @@ class Player {
     var parsedWin = JSON.parse(storedWin);
   }
   takeTurn(fighter) {
+    var classicChoices = ["rock", "paper", "scissors"];
+    var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
     this.selectedFighter = fighter;
   }
 }

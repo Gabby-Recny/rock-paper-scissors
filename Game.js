@@ -1,18 +1,19 @@
 class Game {
-  constructor(gameType) {
+  constructor() {
     this.hasWinner = false;
     this.isDraw = false;
-    this.gameType = gameType
+    this.gameType = null;
     this.humanPlayer = new Player("Human", "Face", "Player One");
     this.roboPlayer = new  Player ("Computer", "Laptop",  "Player Two");
   }
+  //Buggy because clicks on words rather than buttons.
   chooseGame(){
-    if (classicGameBtn.click) {
+    if (event.target.id === "classicChoice") {
       this.gameType = "classic";
-      console.log(this.gameType)
-    } else if (difficultGameBtn.click) {
+      //Display  Classic  Game  Board function
+    } else if (event.target.id === "difficultChoice") {
       this.gameType = "difficult";
-      console.log(this.gameType)
+      //DIsplay Classic Game Board function
     }
   }
   determineClassicWinner() {
