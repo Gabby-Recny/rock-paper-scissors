@@ -27,7 +27,7 @@ for (var i = 0; i < fighterIcons.length; i++) {
 
 function check() {
   console.log("HERE")
-  fighterIcons.classList.add("hidden")
+  // fighterIcons.classList.add("hidden")
   gameBoard.innerHTML +=  `${human.selectedFighter}`
 
   human.humanTurn()
@@ -36,7 +36,6 @@ function check() {
 }
 
 //Hide other icons
-//Show
 //Display computer icon
 //Display human icon
 
@@ -44,18 +43,29 @@ function displayCompChoice()  {
   gameBoard.innerHTML += `${robot.selectedFighter}`
 }
 
-
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
+function show(elements) {
+  for (var i =  0; i < elements.length; i++){
+    elements[i].classList.remove("hidden");
+  }
+}
+
+function hide(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add("hidden");
+  }
+}
+
 function updateWins() {
-  if (determineWinner() === "User wins" ||     determineWinner() === "User wins") {
+  if (determineWinner() === "User wins") {
     playerOne.wins++;
     playerOne.saveWinsToStorage()
     var playerOneWins = playerOne.retrieveWinsFromStorage()
     "Wins:0 in  HTML".innerText = playerWins.wins
-  } else if (determineWinner() ===  "Computer wins" ||     determineWinner() === "Computer wins") {
+  } else if (determineWinner() ===  "Computer wins") {
     playerTwo.wins++;
     playerTwo.saveWinsToStorage()
     var  playerTwoWins = playerTwo.retrieveWinsFromStorage();
@@ -64,40 +74,30 @@ function updateWins() {
 }
 
 function playClassicGame() {
-  console.log("We're playing the classic game")
-  classicGameBtn.classList.add("hidden");
-  difficultGameBtn.classList.add("hidden");
-  classicIcons.classList.remove("hidden");
-  changeGameBtn.classList.remove("hidden");
+  hide([classicGameBtn, difficultGameBtn]);
+  show([classicIcons,changeGameBtn])
 }
 
 
 function playDifficultGame() {
-  classicGameBtn.classList.add("hidden");
-  difficultGameBtn.classList.add("hidden");
-  classicIcons.classList.remove("hidden");
-  difficultIcons.classList.remove("hidden");
-  changeGameBtn.classList.remove("hidden");
-}
-//playGame function under querySelectorAll
-
-function resetClassic() {
-console.log("reset")
-classicIcons.classList.remove("hidden");
-changeGameBtn.classList.remove("hidden");
+  hide([classicGameBtn, difficultGameBtn]);
+  show([classicIcons,changeGameBtn, difficultIcons])
 }
 
-function resetDifficult() {
-  console.log("reset")
-  playDifficultGame()
-
+function resetGame() {
+  if (currentGame.gameType  === "classic") {
+    console.log("reset")
+    //Hiding the chosen icons
+    //display game board
+  } else {
+    console.log("reset")
+  }
 }
 
 
-//if else statement under resetGame
 
 
-//
+
 // rock.addEventListener("click", function() {
 //   scissors.classList.add("hidden");
 //   paper.classList.add("hidden");
