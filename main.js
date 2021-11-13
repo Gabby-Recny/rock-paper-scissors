@@ -1,6 +1,8 @@
 var paper = document.getElementById("paper");
 var rock = document.getElementById("rock");
 var scissors = document.getElementById("scissors");
+var alien = document.getElementById("alien");
+var lizard = document.getElementById("lizard");
 var classicIcons = document.getElementById("classicPlayerIcons");
 var difficultIcons = document.getElementById("difficultPlayerIcons");
 var classicGameBtn = document.getElementById("classicChoice");
@@ -51,11 +53,9 @@ function playClassicGame() {
 function playDifficultGame() {
   classicGameBtn.classList.add("hidden");
   difficultGameBtn.classList.add("hidden");
+  classicIcons.classList.remove("hidden");
   difficultIcons.classList.remove("hidden");
   changeGameBtn.classList.remove("hidden");
-
-  robot.takeTurn()
-  currentGame.determineDifficultWinner();
 }
 
 
@@ -68,28 +68,74 @@ function playDifficultGame() {
 
 
 rock.addEventListener("click", function() {
-  human.takeTurn()
-  robot.robotTurn()
   scissors.classList.add("hidden");
   paper.classList.add("hidden");
+  lizard.classList.add("hidden");
+  alien.classList.add("hidden");
 
-  currentGame.determineClassicWinner()
+  if (currentGame.gameType === "difficult") {
+    human.humanTurn()
+    robot.robotTurn()
+    currentGame.determineDifficultWinner()
+  } else {
+    human.humanTurn()
+    robot.robotTurn()
+    currentGame.determineClassicWinner()
+  }
 })
 
 scissors.addEventListener("click", function() {
-  human.takeTurn()
-  robot.robotTurn()
   rock.classList.add("hidden");
   paper.classList.add("hidden");
+  lizard.classList.add("hidden");
+  alien.classList.add("hidden");
 
-  currentGame.determineClassicWinner()
+  if (currentGame.gameType === "difficult") {
+    human.humanTurn()
+    robot.robotTurn()
+    currentGame.determineDifficultWinner()
+  } else {
+    human.humanTurn()
+    robot.robotTurn()
+    currentGame.determineClassicWinner()
+  }
 })
 
 paper.addEventListener("click", function() {
-  human.takeTurn()
-  robot.robotTurn()
   scissors.classList.add("hidden");
   rock.classList.add("hidden");
+  lizard.classList.add("hidden");
+  alien.classList.add("hidden");
 
-  currentGame.determineClassicWinner()
+  if (currentGame.gameType === "difficult") {
+    human.humanTurn()
+    robot.robotTurn()
+    currentGame.determineDifficultWinner()
+  } else {
+    human.humanTurn()
+    robot.robotTurn()
+    currentGame.determineClassicWinner()
+  }
+})
+
+alien.addEventListener("click", function() {
+  scissors.classList.add("hidden");
+  rock.classList.add("hidden");
+  lizard.classList.add("hidden");
+  paper.classList.add("hidden");
+
+    human.humanTurn()
+    robot.robotTurn()
+    currentGame.determineDifficultWinner()
+})
+
+lizard.addEventListener("click", function() {
+  scissors.classList.add("hidden");
+  rock.classList.add("hidden");
+  alien.classList.add("hidden");
+  paper.classList.add("hidden");
+
+    human.humanTurn()
+    robot.robotTurn()
+    currentGame.determineDifficultWinner()
 })

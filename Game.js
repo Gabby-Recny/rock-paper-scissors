@@ -35,9 +35,9 @@ class Game {
        console.log("Computer wins")
        return `Computer wins!`
     }
-    setTimeout(function(){
+    setTimeout(function() {
       console.log("Reset  here")
-    }, 2000)
+    }, 1000)
   }
   determineDifficultWinner() {
     if (this.humanPlayer.selectedFighter === this.roboPlayer.selectedFighter) {
@@ -57,7 +57,7 @@ class Game {
     }
     setTimeout(function(){
       console.log("Reset  here")
-    }, 2000)
+    }, 1000)
   }
 }
 
