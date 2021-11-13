@@ -18,22 +18,8 @@ class Game {
       playDifficultGame()
     }
   }
-  determineClassicWinner() {
+  determineWinner() {
     if (this.humanPlayer.selectedFighter ===  this.roboPlayer.selectedFighter ) {
-      console.log("it's a draw")
-    } else if (this.humanPlayer.selectedFighter === "rock" && this.roboPlayer.selectedFighter === "scissors")  {
-      console.log("User wins")
-    } else if (this.humanPlayer.selectedFighter === "paper" && this.roboPlayer.selectedFighter === "rock") {
-       console.log("User  wins");
-    } else if (this.humanPlayer.selectedFighter === "scissors" && this.roboPlayer.selectedFighter === "paper") {
-       console.log("User wins")
-    } else {
-       console.log("Computer wins")
-    }
-    setTimeout(resetDifficult, 1000)
-  }
-  determineDifficultWinner() {
-    if (this.humanPlayer.selectedFighter === this.roboPlayer.selectedFighter) {
       console.log("it's a draw")
     } else if (this.humanPlayer.selectedFighter === "rock" && (this.roboPlayer.selectedFighter === "scissors" || this.roboPlayer.selectedFighter ===  "lizard")) {
       console.log("User wins")
@@ -51,6 +37,38 @@ class Game {
     setTimeout(resetDifficult, 1000)
   }
 }
+  // determineClassicWinner() {
+  //   if (this.humanPlayer.selectedFighter ===  this.roboPlayer.selectedFighter ) {
+  //     console.log("it's a draw")
+  //   } else if (this.humanPlayer.selectedFighter === "rock" && this.roboPlayer.selectedFighter === "scissors")  {
+  //     console.log("User wins")
+  //   } else if (this.humanPlayer.selectedFighter === "paper" && this.roboPlayer.selectedFighter === "rock") {
+  //      console.log("User  wins");
+  //   } else if (this.humanPlayer.selectedFighter === "scissors" && this.roboPlayer.selectedFighter === "paper") {
+  //      console.log("User wins")
+  //   } else {
+  //      console.log("Computer wins")
+  //   }
+  //   setTimeout(resetDifficult, 1000)
+  // }
+  // determineDifficultWinner() {
+  //   if (this.humanPlayer.selectedFighter === this.roboPlayer.selectedFighter) {
+  //     console.log("it's a draw")
+  //   } else if (this.humanPlayer.selectedFighter === "rock" && (this.roboPlayer.selectedFighter === "scissors" || this.roboPlayer.selectedFighter ===  "lizard")) {
+  //     console.log("User wins")
+  //   } else if (this.humanPlayer.selectedFighter === "paper" && (this.roboPlayer.selectedFighter === "rock" || this.roboPlayer.selectedFighter === "alien")) {
+  //     console.log("User  wins");
+  //   } else if (this.humanPlayer.selectedFighter === "scissors" && (this.roboPlayer.selectedFighter === "paper" || this.roboPlayer.selectedFighter === "lizard")) {
+  //     console.log("User wins")
+  //   } else if (this.humanPlayer.selectedFighter === "lizard" && (this.roboPlayer.selectedFighter === "paper" || this.roboPlayer.selectedFighter === "alien")) {
+  //     console.log("User wins")
+  //   } else if (this.humanPlayer.selectedFighter === "alien" && (this.roboPlayer.selectedFighter === "scissors" || this.roboPlayer.selectedFighter === "rock")) {
+  //     console.log("User wins")
+  //   } else {
+  //     console.log("Computer wins")
+  //   }
+  //   setTimeout(resetDifficult, 1000)
+  // }
 
 
 

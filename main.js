@@ -10,7 +10,6 @@ var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
 
-
 var currentGame = new Game();
 var human =  currentGame.humanPlayer;
 var robot = currentGame.roboPlayer;
@@ -26,12 +25,12 @@ function getRandomIndex(array) {
 }
 
 function updateWins() {
-  if (determineClassicWinner() === "User wins" ||     determineDifficultWinner() === "User wins") {
+  if (determineWinner() === "User wins" ||     determineWinner() === "User wins") {
     playerOne.wins++;
     playerOne.saveWinsToStorage()
     var playerOneWins = playerOne.retrieveWinsFromStorage()
     "Wins:0 in  HTML".innerText = playerWins.wins
-  } else if (determineClassicWinner() ===  "Computer wins" ||     determineDifficultWinner() === "Computer wins") {
+  } else if (determineWinner() ===  "Computer wins" ||     determineWinner() === "Computer wins") {
     playerTwo.wins++;
     playerTwo.saveWinsToStorage()
     var  playerTwoWins = playerTwo.retrieveWinsFromStorage();
@@ -80,15 +79,9 @@ rock.addEventListener("click", function() {
   lizard.classList.add("hidden");
   alien.classList.add("hidden");
 
-  if (currentGame.gameType === "difficult") {
     human.humanTurn()
     robot.robotTurn()
-    currentGame.determineDifficultWinner()
-  } else {
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineClassicWinner()
-  }
+    currentGame.determineWinner()
 })
 
 scissors.addEventListener("click", function() {
@@ -97,15 +90,9 @@ scissors.addEventListener("click", function() {
   lizard.classList.add("hidden");
   alien.classList.add("hidden");
 
-  if (currentGame.gameType === "difficult") {
     human.humanTurn()
     robot.robotTurn()
-    currentGame.determineDifficultWinner()
-  } else {
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineClassicWinner()
-  }
+    currentGame.determineWinner()
 })
 
 paper.addEventListener("click", function() {
@@ -114,15 +101,9 @@ paper.addEventListener("click", function() {
   lizard.classList.add("hidden");
   alien.classList.add("hidden");
 
-  if (currentGame.gameType === "difficult") {
     human.humanTurn()
     robot.robotTurn()
-    currentGame.determineDifficultWinner()
-  } else {
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineClassicWinner()
-  }
+    currentGame.determineWinner()
 })
 
 alien.addEventListener("click", function() {
@@ -133,7 +114,7 @@ alien.addEventListener("click", function() {
 
     human.humanTurn()
     robot.robotTurn()
-    currentGame.determineDifficultWinner()
+    currentGame.determineWinner()
 })
 
 lizard.addEventListener("click", function() {
@@ -144,5 +125,5 @@ lizard.addEventListener("click", function() {
 
     human.humanTurn()
     robot.robotTurn()
-    currentGame.determineDifficultWinner()
+    currentGame.determineWinner()
 })
