@@ -100,7 +100,9 @@ h5 {
   width: 55%;
   margin-top: 6%;
   margin-bottom: 6%;
+  cursor: pointer;
 }
+
 
 .game-title  {
   font-size: 15px;
@@ -117,6 +119,7 @@ h5 {
   border: none;
   width: 35%;
   height: 35%;
+  cursor: pointer;
 }
 
 .difficult-player-icons,
