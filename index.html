@@ -20,7 +20,7 @@
     </aside>
     <main>
       <section class="game-board"  id="gameBoard">
-        <button class="game-choice-btn" id="classicChoice">
+        <button class="game-choice-btn" class="classic-choice" id="classicChoice" value="classicGame">
           <div class="game-options">
             <p class="game-title">Classic Choice</p>
             <p>Rock > scissors</p>
@@ -28,7 +28,7 @@
   	        <p>Paper > Rock</p>
           </div>
         </button>
-        <button class="game-choice-btn" id="difficultChoice">
+        <button class="game-choice-btn" class="difficult-choice" id="difficultChoice" value="difficultGame">
           <div class="game-options">
             <p class="game-title">Difficult Choice</p>
             <p>Rock > Scissors & Lizards</p>
@@ -39,22 +39,23 @@
           </div>
         </button>
         <div class="classic-player-icons hidden" id="classicPlayerIcons">
-          <button id="scissors">
-            <img src="assets/black-and-white-scissors.png" alt="scissors">
+          <button id="scissorsButton">
+            <img src="assets/black-and-white-scissors.png" alt="scissors" id="scissors">
           </button>
-          <button id="paper">
-            <img src="assets/happy-paper.png" alt="paper">
+          <button id="paperButton">
+            <img src="assets/happy-paper.png" alt="paper" id="paper">
           </button>
-          <button id="rock">
-            <img type="image" src="assets/rock.png" alt="rock">
+          <button id="rockButton">
+            <img type="image" src="assets/rock.png" alt="rock" id="rock">
           </button>
         </div>
         <div class="difficult-player-icons hidden" id="difficultPlayerIcons">
-          <input type="image" class="scissors" src="assets/black-and-white-scissors.png" alt="scissors">
-          <input type="image" src="assets/happy-paper.png" alt="paper">
-          <input type="image" src="assets/rock.png" alt="rock">
-          <input type="image" src="assets/flat-lizard.png" alt="lizards">
-          <input type="image" src="assets/happy-alien.png" alt="alien">
+          <button id="lizardButton">
+            <img src="assets/flat-lizard.png" alt="lizard" id="lizard">
+          </button>
+          <button id="alienButton">
+            <img src="assets/happy-alien.png" alt="alien" id="alien">
+          </button>
         </div>
       </section>
     </main>
