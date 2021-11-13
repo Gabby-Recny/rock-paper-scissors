@@ -6,7 +6,7 @@ class Game {
     this.humanPlayer = new Player("Human", "Face", "Player One");
     this.roboPlayer = new  Player ("Computer", "Laptop",  "Player Two");
   }
-  //Buggy because clicks on words rather than buttons.
+  //Buggy because does not click on words, only buttons.
   chooseGame() {
     if (event.target.id === "classicChoice") {
       this.gameType = "classic";
@@ -18,7 +18,7 @@ class Game {
   }
   determineWinner() {
     if (this.humanPlayer.selectedFighter ===  this.roboPlayer.selectedFighter ) {
-      console.log("it's a draw")
+      return "it's a draw"
     } else if (this.humanPlayer.selectedFighter === "rock" && (this.roboPlayer.selectedFighter === "scissors" || this.roboPlayer.selectedFighter ===  "lizard")) {
       console.log("User wins")
     } else if (this.humanPlayer.selectedFighter === "paper" && (this.roboPlayer.selectedFighter === "rock" || this.roboPlayer.selectedFighter === "alien")) {

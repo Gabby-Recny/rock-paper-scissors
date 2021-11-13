@@ -17,7 +17,7 @@ class Player {
   }
   humanTurn() {
     this.selectedFighter = event.target.id
-    console.log("human fighter:", this.selectedFighter)
+    console.log("human fighter",  human.selectedFighter)
   }
   robotTurn() {
     var classicChoices = ["rock", "paper", "scissors"];
