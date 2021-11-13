@@ -9,6 +9,7 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
+var  fighterIcons = document.querySelectorAll(".fighterIcons");
 
 var currentGame = new Game();
 var human =  currentGame.humanPlayer;
@@ -18,6 +19,30 @@ var robot = currentGame.roboPlayer;
 gameBoard.addEventListener("click", function()  {
   currentGame.chooseGame()
 });
+
+
+for (var i = 0; i < fighterIcons.length; i++) {
+  fighterIcons[i].addEventListener("click", check)
+}
+
+function check() {
+  console.log("HERE")
+  fighterIcons.classList.add("hidden")
+  gameBoard.innerHTML +=  `${human.selectedFighter}`
+
+  human.humanTurn()
+  robot.robotTurn()
+  currentGame.determineWinner()
+}
+
+//Hide other icons
+//Show
+//Display computer icon
+//Display human icon
+
+function displayCompChoice()  {
+  gameBoard.innerHTML += `${robot.selectedFighter}`
+}
 
 
 function getRandomIndex(array) {
@@ -72,58 +97,58 @@ function resetDifficult() {
 //if else statement under resetGame
 
 
-
-rock.addEventListener("click", function() {
-  scissors.classList.add("hidden");
-  paper.classList.add("hidden");
-  lizard.classList.add("hidden");
-  alien.classList.add("hidden");
-
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineWinner()
-})
-
-scissors.addEventListener("click", function() {
-  rock.classList.add("hidden");
-  paper.classList.add("hidden");
-  lizard.classList.add("hidden");
-  alien.classList.add("hidden");
-
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineWinner()
-})
-
-paper.addEventListener("click", function() {
-  scissors.classList.add("hidden");
-  rock.classList.add("hidden");
-  lizard.classList.add("hidden");
-  alien.classList.add("hidden");
-
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineWinner()
-})
-
-alien.addEventListener("click", function() {
-  scissors.classList.add("hidden");
-  rock.classList.add("hidden");
-  lizard.classList.add("hidden");
-  paper.classList.add("hidden");
-
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineWinner()
-})
-
-lizard.addEventListener("click", function() {
-  scissors.classList.add("hidden");
-  rock.classList.add("hidden");
-  alien.classList.add("hidden");
-  paper.classList.add("hidden");
-
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineWinner()
-})
+//
+// rock.addEventListener("click", function() {
+//   scissors.classList.add("hidden");
+//   paper.classList.add("hidden");
+//   lizard.classList.add("hidden");
+//   alien.classList.add("hidden");
+//
+//     human.humanTurn()
+//     robot.robotTurn()
+//     currentGame.determineWinner()
+// })
+//
+// scissors.addEventListener("click", function() {
+//   rock.classList.add("hidden");
+//   paper.classList.add("hidden");
+//   lizard.classList.add("hidden");
+//   alien.classList.add("hidden");
+//
+//     human.humanTurn()
+//     robot.robotTurn()
+//     currentGame.determineWinner()
+// })
+//
+// paper.addEventListener("click", function() {
+//   scissors.classList.add("hidden");
+//   rock.classList.add("hidden");
+//   lizard.classList.add("hidden");
+//   alien.classList.add("hidden");
+//
+//     human.humanTurn()
+//     robot.robotTurn()
+//     currentGame.determineWinner()
+// })
+//
+// alien.addEventListener("click", function() {
+//   scissors.classList.add("hidden");
+//   rock.classList.add("hidden");
+//   lizard.classList.add("hidden");
+//   paper.classList.add("hidden");
+//
+//     human.humanTurn()
+//     robot.robotTurn()
+//     currentGame.determineWinner()
+// })
+//
+// lizard.addEventListener("click", function() {
+//   scissors.classList.add("hidden");
+//   rock.classList.add("hidden");
+//   alien.classList.add("hidden");
+//   paper.classList.add("hidden");
+//
+//     human.humanTurn()
+//     robot.robotTurn()
+//     currentGame.determineWinner()
+// })
