@@ -25,8 +25,6 @@ function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
 
-
-
 function updateWins() {
   if (determineClassicWinner() === "User wins" ||     determineDifficultWinner() === "User wins") {
     playerOne.wins++;
@@ -57,6 +55,23 @@ function playDifficultGame() {
   difficultIcons.classList.remove("hidden");
   changeGameBtn.classList.remove("hidden");
 }
+//playGame function under querySelectorAll
+
+function resetClassic() {
+console.log("reset")
+classicIcons.classList.remove("hidden");
+changeGameBtn.classList.remove("hidden");
+}
+
+function resetDifficult() {
+  console.log("reset")
+  playDifficultGame()
+
+}
+
+
+//if else statement under resetGame
+
 
 
 rock.addEventListener("click", function() {

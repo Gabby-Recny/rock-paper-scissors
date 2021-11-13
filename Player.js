@@ -16,21 +16,18 @@ class Player {
     var parsedWin = JSON.parse(storedWin);
   }
   humanTurn() {
-    var classicChoices = ["rock", "paper", "scissors"];
-    var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
-
     this.selectedFighter = event.target.id
-    console.log(this.selectedFighter)
+    console.log("human fighter:", this.selectedFighter)
   }
   robotTurn() {
     var classicChoices = ["rock", "paper", "scissors"];
     var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
 
       if (currentGame.gameType === "classic") { this.selectedFighter = classicChoices[getRandomIndex(classicChoices)]
-      console.log("robot", this.selectedFighter)
+      console.log("robot classic:", this.selectedFighter)
     } else if (currentGame.gameType === "difficult") {
       this.selectedFighter = difficultChoices[getRandomIndex(difficultChoices)]
-      console.log("robot", this.selectedFighter)
+      console.log("robot difficult:", this.selectedFighter)
     }
   }
 }
