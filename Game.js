@@ -21,19 +21,14 @@ class Game {
   determineClassicWinner() {
     if (this.humanPlayer.selectedFighter ===  this.roboPlayer.selectedFighter ) {
       console.log("it's a draw")
-      return `It's a draw.`
     } else if (this.humanPlayer.selectedFighter === "rock" && this.roboPlayer.selectedFighter === "scissors")  {
       console.log("User wins")
-      return  `User wins!`
     } else if (this.humanPlayer.selectedFighter === "paper" && this.roboPlayer.selectedFighter === "rock") {
        console.log("User  wins");
-       return  `User wins!`
     } else if (this.humanPlayer.selectedFighter === "scissors" && this.roboPlayer.selectedFighter === "paper") {
        console.log("User wins")
-       return  `User wins!`
     } else {
        console.log("Computer wins")
-       return `Computer wins!`
     }
     setTimeout(function() {
       console.log("Reset  here")

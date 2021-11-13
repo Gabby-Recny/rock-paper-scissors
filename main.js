@@ -59,14 +59,6 @@ function playDifficultGame() {
 }
 
 
-
-
-//human fighter is being assigned to Classic game
-//Robot fighter  is not being assigned
-
-
-
-
 rock.addEventListener("click", function() {
   scissors.classList.add("hidden");
   paper.classList.add("hidden");
