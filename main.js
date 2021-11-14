@@ -22,6 +22,7 @@ changeGameBtn.addEventListener("click", showHomePage)
 classicIcons.addEventListener("click", selectIcon)
 
 
+//General Functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -32,16 +33,32 @@ function show(elements) {
   }
 }
 
-
 function hide(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add("hidden");
   }
 }
 
+function hideArray(arrayOfStrings) {
+  for (var i = 0; i < arrayOfStrings.length; i++) {
+    var element = document.getElementById(arrayOfStrings[i]);
+    element.classList.add("hidden");
+  }
+}
+
+function displayArray(arrayOfStrings) {
+  for (var i = 0; i < arrayOfStrings.length; i++) {
+    var element = document.getElementById(arrayOfStrings[i]);
+    element.classList.remove("hidden");
+  }
+}
+
+
+//Hide and display home page
 function hideHomePage() {
+  console.log("2")
   hide([classicGameBtn, difficultGameBtn]);
-  show([classicIcons,changeGameBtn]);
+  // show([classicIcons,changeGameBtn]);
 }
 
 function showHomePage() {
@@ -49,7 +66,21 @@ function showHomePage() {
   hide([classicIcons, difficultIcons, changeGameBtn]);
 }
 
+//Hide  and display game board
+function displayClassic() {
+  console.log("4")
+  show([classicIcons])
+}
+
+function displayDifficult() {
+  console.log("4")
+  show([classicIcons, difficultIcons])
+}
+
+
+//Main Game
 function playGame() {
+  console.log("3")
   if (currentGame.type === "classic") {
     displayClassic()
   } else {
@@ -57,15 +88,27 @@ function playGame() {
   }
 }
 
-function displayClassic() {
-var classicChoices = ["rock", "paper", "scissors"];
-  console.log("AMC at 10")
-  showIt(classicChoices)
+function selectIcon(event) {
+var selection = event.target.closest("img").id;
+console.log("5")
+  human.humanTurn()
+  hideIcons(human.selection)
+  robot.robotTurn()
+  displayCompChoice()
+  currentGame.determineDraw()
 }
 
-function displayDifficult() {
-  show([classicIcons, difficultIcons])
+
+function displayCompChoice() {
+    displayArray([robot.selection])
 }
+
+function hideIcons() {
+  currentGame.diffChoices.splice(human.selection, 1);
+  hideArray(currentGame.diffChoices)
+  console.log("5.2")
+}
+
 
 
 function updateWins() {
@@ -85,55 +128,12 @@ function updateWins() {
 function resetGame() {
   show([changeGameBtn])
   if (currentGame.type  === "classic") {
-    console.log("reset classic")
+    console.log("6")
     hide([rock, paper, scissors])
     displayClassic()
   } else {
     console.log("reset difficult")
-    hide([classicIcons, difficultIcons])
+    hide([rock, paper, scissors, lizard, alien])
     displayDifficult()
   }
-}
-
-function displayCompChoice() {
-    showIt([robot.selection])
-}
-
-function hide(elements) {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.add("hidden");
-  }
-}
-
-
-function hideIt(arrayOfStrings) {
-  for (var i = 0; i < arrayOfStrings.length; i++) {
-    var element = document.getElementById(arrayOfStrings[i]);
-    element.classList.add("hidden");
-  }
-}
-
-function showIt(arrayOfStrings) {
-  for (var i = 0; i < arrayOfStrings.length; i++) {
-    var element = document.getElementById(arrayOfStrings[i]);
-    element.classList.remove("hidden");
-  }
-}
-
-
-function selectIcon(event) {
-var selection = event.target.closest("img").id;
-console.log("selection: ", selection)
-  human.humanTurn()
-  hideIcons(human.selection)
-  robot.robotTurn()
-  displayCompChoice()
-  currentGame.determineDraw()
-  currentGame.determineWinner()
-}
-
-function hideIcons() {
-  var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"]
-  difficultChoices.splice(human.selection, 1);
-  hideIt(difficultChoices)
 }

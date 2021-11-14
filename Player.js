@@ -19,12 +19,10 @@ class Player {
     console.log("human selection",  human.selection)
   }
   robotTurn() {
-    var classicChoices = ["rock", "paper", "scissors"];
-    var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
-      if (currentGame.type === "classic") { this.selection = classicChoices[getRandomIndex(classicChoices)]
+      if (currentGame.type === "classic") { this.selection = currentGame.rpsChoices[getRandomIndex(currentGame.rpsChoices)]
       console.log("robot classic:", this.selection)
     } else if (currentGame.type === "difficult") {
-      this.selection = difficultChoices[getRandomIndex(difficultChoices)]
+      this.selection = currentGame.diffChoices[getRandomIndex(currentGame.diffChoices)]
       console.log("robot difficult:", this.selection)
     }
   }

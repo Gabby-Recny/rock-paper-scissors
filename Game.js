@@ -3,16 +3,20 @@ class Game {
     this.hasWinner = false;
     this.isDraw = false;
     this.type = null;
+    this.classicChoices = ["rock", "paper", "scissors"];
+    this.diffChoices = ["rock", "paper", "scissors", "alien", "lizard"];
     this.humanPlayer = new Player("Human", "Face");
     this.roboPlayer = new Player ("Computer", "Laptop");
   }
   //Buggy because does not click on words, only buttons.
   chooseGame() {
+    console.log("1")
     if (event.target.id === "classicChoice") {
       this.type = "classic";
       hideHomePage()
       playGame()
     } else if (event.target.id === "difficultChoice") {
+      console.log("1")
       this.type = "difficult";
       hideHomePage()
       playGame()
@@ -44,6 +48,10 @@ class Game {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;
       this.hasWinner =  false;
+      setTimeout(resetGame, 1000)
+    } else {
+      determineWinner()
+      console.log("6")
     }
   }
 }
