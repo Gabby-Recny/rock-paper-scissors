@@ -2,56 +2,50 @@ class Game {
   constructor() {
     this.hasWinner = false;
     this.isDraw = false;
-    this.gameType = null;
-    this.humanPlayer = new Player("Human", "Face", "Player One");
-    this.roboPlayer = new  Player ("Computer", "Laptop",  "Player Two");
+    this.type = null;
+    this.humanPlayer = new Player("Human", "Face");
+    this.roboPlayer = new Player("Computer", "Laptop");
   }
-  //Buggy because clicks on words rather than buttons.
-  chooseGame(){
+  //Buggy because does not click on words, only buttons.
+  chooseGame() {
+    console.log("2")
     if (event.target.id === "classicChoice") {
-      this.gameType = "classic";
-      console.log("choose game method:", this.gameType)
-      playClassicGame()
+      this.type = "classic";
+      hideHomePage()
+      displayGame()
     } else if (event.target.id === "difficultChoice") {
-      this.gameType = "difficult";
-      console.log("choose game method:", this.gameType)
-      playDifficultGame()
+      this.type = "difficult";
+      hideHomePage()
+      displayGame()
     }
   }
-  determineClassicWinner() {
-    if (this.humanPlayer.selectedFighter ===  this.roboPlayer.selectedFighter ) {
-      console.log("it's a draw")
-    } else if (this.humanPlayer.selectedFighter === "rock" && this.roboPlayer.selectedFighter === "scissors")  {
-      console.log("User wins")
-    } else if (this.humanPlayer.selectedFighter === "paper" && this.roboPlayer.selectedFighter === "rock") {
-       console.log("User  wins");
-    } else if (this.humanPlayer.selectedFighter === "scissors" && this.roboPlayer.selectedFighter === "paper") {
-       console.log("User wins")
-    } else {
-       console.log("Computer wins")
-    }
-    setTimeout(resetDifficult, 1000)
-  }
-  determineDifficultWinner() {
-    if (this.humanPlayer.selectedFighter === this.roboPlayer.selectedFighter) {
-      console.log("it's a draw")
-    } else if (this.humanPlayer.selectedFighter === "rock" && (this.roboPlayer.selectedFighter === "scissors" || this.roboPlayer.selectedFighter ===  "lizard")) {
-      console.log("User wins")
-    } else if (this.humanPlayer.selectedFighter === "paper" && (this.roboPlayer.selectedFighter === "rock" || this.roboPlayer.selectedFighter === "alien")) {
+  determineWinner() {
+    if (this.humanPlayer.selection === this.roboPlayer.selection) {
+      this.isDraw = true;
+      this.hasWinner = false;
+      console.log("draw")
+    } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
+      this.hasWinner = true;
+      updateWins(human)
+    } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
       console.log("User  wins");
-    } else if (this.humanPlayer.selectedFighter === "scissors" && (this.roboPlayer.selectedFighter === "paper" || this.roboPlayer.selectedFighter === "lizard")) {
-      console.log("User wins")
-    } else if (this.humanPlayer.selectedFighter === "lizard" && (this.roboPlayer.selectedFighter === "paper" || this.roboPlayer.selectedFighter === "alien")) {
-      console.log("User wins")
-    } else if (this.humanPlayer.selectedFighter === "alien" && (this.roboPlayer.selectedFighter === "scissors" || this.roboPlayer.selectedFighter === "rock")) {
-      console.log("User wins")
+      this.hasWinner = true;
+      updateWins(human)
+    } else if (this.humanPlayer.selection === "scissors" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "lizard")) {
+      this.hasWinner = true;
+      updateWins(human)
+    } else if (this.humanPlayer.selection === "lizard" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "alien")) {
+      this.hasWinner = true;
+      updateWins(human)
+    } else if (this.humanPlayer.selection === "alien" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "rock")) {
+      this.hasWinner = true;
+      updateWins(human)
     } else {
       console.log("Computer wins")
+      this.hasWinner = true;
+      updateWins(robot)
     }
-    setTimeout(resetDifficult, 1000)
+    console.log("9")
+    setTimeout(resetGame, 500)
   }
 }
-
-
-
-//When Player wins, save to localStorage and update innerHTML
