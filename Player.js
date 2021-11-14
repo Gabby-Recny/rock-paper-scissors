@@ -1,10 +1,9 @@
 class Player {
-  constructor(name, token, id) {
+  constructor(name, token) {
   this.name = name;
   this.token = token;
-  this.id = id;
   this.wins = 0;
-  this.selectedFighter = null;
+  this.selection = null;
   }
   saveWinsToStorage() {
     var stringedWin = JSON.stringify(this);
@@ -16,18 +15,17 @@ class Player {
     var parsedWin = JSON.parse(storedWin);
   }
   humanTurn() {
-    this.selectedFighter = event.target.id
-    console.log("human fighter",  human.selectedFighter)
+    this.selection = event.target.id
+    console.log("human selection",  human.selection)
   }
   robotTurn() {
     var classicChoices = ["rock", "paper", "scissors"];
     var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
-
-      if (currentGame.gameType === "classic") { this.selectedFighter = classicChoices[getRandomIndex(classicChoices)]
-      console.log("robot classic:", this.selectedFighter)
-    } else if (currentGame.gameType === "difficult") {
-      this.selectedFighter = difficultChoices[getRandomIndex(difficultChoices)]
-      console.log("robot difficult:", this.selectedFighter)
+      if (currentGame.type === "classic") { this.selection = classicChoices[getRandomIndex(classicChoices)]
+      console.log("robot classic:", this.selection)
+    } else if (currentGame.type === "difficult") {
+      this.selection = difficultChoices[getRandomIndex(difficultChoices)]
+      console.log("robot difficult:", this.selection)
     }
   }
 }

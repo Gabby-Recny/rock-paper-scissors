@@ -9,58 +9,18 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
-var fighterIcons = document.querySelectorAll(".fighterIcons");
+var selectionIcons = document.querySelectorAll("selectionIcons")
 
 var currentGame = new Game();
 var human =  currentGame.humanPlayer;
 var robot = currentGame.roboPlayer;
 
-
 gameBoard.addEventListener("click", function()  {
   currentGame.chooseGame()
 });
+changeGameBtn.addEventListener("click", showHomePage)
+classicIcons.addEventListener("click", selectIcon)
 
-
-// for (var i = 0; i < fighterIcons.length; i++) {
-//   fighterIcons[i].addEventListener("click", check)
-// }
-
-// function check() {
-//   human.humanTurn()
-//   console.log("human  turn", human.humanTurn())
-//   console.log("human fighter:", this.selectedFighter)
-//
-//   var classicChoices = [rock, paper, scissors];
-//   var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
-//   for (var i = 0; i < classicChoices.length; i++) {
-//     if (human.selectedFighter !== human.humanTurn()) {
-//       classicChoices[i].splice(i, 1)
-//       console.log("hide")
-//       hide(classicChoices[i])
-//     }
-//   }
-//   // robot.robotTurn()
-//   // currentGame.determineWinner()
-// }
-
-//Hide other icons
-//Display computer icon
-//Display human icon
-//   scissors.classList.add("hidden");
-//   rock.classList.add("hidden");
-//   lizard.classList.add("hidden");
-//   paper.classList.add("hidden");
-//
-//     human.humanTurn()
-//     robot.robotTurn()
-//     currentGame.determineWinner()
-//
-//If element !== event.target.// ID
-//hidefunction
-
-function displayCompChoice()  {
-  gameBoard.innerHTML += `${robot.selectedFighter}`
-}
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
@@ -72,103 +32,108 @@ function show(elements) {
   }
 }
 
+
 function hide(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add("hidden");
   }
 }
 
-function updateWins() {
-  if (determineWinner() === "User wins") {
-    playerOne.wins++;
-    playerOne.saveWinsToStorage()
-    var playerOneWins = playerOne.retrieveWinsFromStorage()
-    "Wins:0 in  HTML".innerText = playerWins.wins
-  } else if (determineWinner() ===  "Computer wins") {
-    playerTwo.wins++;
-    playerTwo.saveWinsToStorage()
-    var  playerTwoWins = playerTwo.retrieveWinsFromStorage();
-    "Wins:0 in  HTML".innerText = playerTwoWins.wins
+function hideHomePage() {
+  hide([classicGameBtn, difficultGameBtn]);
+  show([classicIcons,changeGameBtn]);
+}
+
+function showHomePage() {
+  show([classicGameBtn, difficultGameBtn]);
+  hide([classicIcons, difficultIcons, changeGameBtn]);
+}
+
+function playGame() {
+  if (currentGame.type === "classic") {
+    displayClassic()
+  } else {
+    displayDifficult();
   }
 }
 
-function playClassicGame() {
-  hide([classicGameBtn, difficultGameBtn]);
-  show([classicIcons,changeGameBtn])
+function displayClassic() {
+var classicChoices = ["rock", "paper", "scissors"];
+  console.log("AMC at 10")
+  showIt(classicChoices)
+}
+
+function displayDifficult() {
+  show([classicIcons, difficultIcons])
 }
 
 
-function playDifficultGame() {
-  hide([classicGameBtn, difficultGameBtn]);
-  show([classicIcons,changeGameBtn, difficultIcons])
+function updateWins() {
+  if (determineWinner() === "User wins") {
+    human.wins++;
+    human.saveWinsToStorage()
+    var playerOneWins = human.retrieveWinsFromStorage()
+    "Wins:0 in  HTML".innerText = playerOneWins
+  } else if (determineWinner() ===  "Computer wins") {
+    robot.wins++;
+    robot.saveWinsToStorage()
+    var  playerTwoWins = robot.retrieveWinsFromStorage();
+    "Wins:0 in  HTML".innerText = playerTwoWins
+  }
 }
 
 function resetGame() {
-  if (currentGame.gameType  === "classic") {
-    console.log("reset")
-    //Hiding the chosen icons
-    //display game board
+  show([changeGameBtn])
+  if (currentGame.type  === "classic") {
+    console.log("reset classic")
+    hide([rock, paper, scissors])
+    displayClassic()
   } else {
-    console.log("reset")
+    console.log("reset difficult")
+    hide([classicIcons, difficultIcons])
+    displayDifficult()
+  }
+}
+
+function displayCompChoice() {
+    showIt([robot.selection])
+}
+
+function hide(elements) {
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].classList.add("hidden");
   }
 }
 
 
-rock.addEventListener("click", function() {
-  hide([scissors,paper, lizard, alien])
-
-    human.humanTurn()
-    robot.robotTurn()
-    currentGame.determineWinner()
-})
-
-scissors.addEventListener("click", function() {
-  hide([rock, paper,  lizard,  alien])
-    human.humanTurn()
-    robot.robotTurn()
-    displayCompChoice()
-    currentGame.determineWinner()
-})
-
-paper.addEventListener("click", function() {
-  hide([scissors, rock, lizard, alien])
-    human.humanTurn()
-    robot.robotTurn()
-    displayCompChoice()
-    currentGame.determineWinner()
-})
-
-alien.addEventListener("click", function() {
-  hide([scissors, rock, lizard, paper])
-
-    human.humanTurn()
-    robot.robotTurn()
-    displayCompChoice()
-    currentGame.determineWinner()
-})
-
-lizard.addEventListener("click", function() {
-  hide([scissors, rock, alien, paper])
-
-    human.humanTurn()
-    robot.robotTurn()
-    displayCompChoice()
-    currentGame.determineWinner()
-})
-
-
-function displayCompChoice() {
-  if (robot.selectedFighter === "rock") {
-    show([rock])
-  } else if (robot.selectedFighter === "paper") {
-    show([paper])
-  } else if (robot.selectedFighter === "scissors") {
-    show([scissors])
-  } else if (robot.selectedFighter === "alien") {
-    show([alien])
-  } else if (robot.selectedFighter === "lizard") {
-    show([lizard])
-  } else if (determineWinner() === "it's a draw") {
-    show([robot.selectedFighter, human.selectedFighter])
+function hideIt(arrayOfStrings) {
+  for (var i = 0; i < arrayOfStrings.length; i++) {
+    var element = document.getElementById(arrayOfStrings[i]);
+    element.classList.add("hidden");
   }
+}
+
+function showIt(arrayOfStrings) {
+  for (var i = 0; i < arrayOfStrings.length; i++) {
+    var element = document.getElementById(arrayOfStrings[i]);
+    element.classList.remove("hidden");
+  }
+}
+
+
+function selectIcon(event) {
+var selection = event.target.closest("img").id;
+console.log("selection: ", selection)
+  human.humanTurn()
+  hideIcons(human.selection)
+  robot.robotTurn()
+  displayCompChoice()
+  currentGame.determineDraw()
+  currentGame.determineWinner()
+}
+
+function hideIcons() {
+  var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"]
+  difficultChoices.splice(human.selection, 1);
+  hideIt(difficultChoices)
 }

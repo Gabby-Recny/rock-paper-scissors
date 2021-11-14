@@ -2,38 +2,48 @@ class Game {
   constructor() {
     this.hasWinner = false;
     this.isDraw = false;
-    this.gameType = null;
-    this.humanPlayer = new Player("Human", "Face", "Player One");
-    this.roboPlayer = new  Player ("Computer", "Laptop",  "Player Two");
+    this.type = null;
+    this.humanPlayer = new Player("Human", "Face");
+    this.roboPlayer = new Player ("Computer", "Laptop");
   }
   //Buggy because does not click on words, only buttons.
   chooseGame() {
     if (event.target.id === "classicChoice") {
-      this.gameType = "classic";
-      playClassicGame()
+      this.type = "classic";
+      hideHomePage()
+      playGame()
     } else if (event.target.id === "difficultChoice") {
-      this.gameType = "difficult";
-      playDifficultGame()
+      this.type = "difficult";
+      hideHomePage()
+      playGame()
     }
   }
   determineWinner() {
-    if (this.humanPlayer.selectedFighter ===  this.roboPlayer.selectedFighter ) {
-      return "it's a draw"
-    } else if (this.humanPlayer.selectedFighter === "rock" && (this.roboPlayer.selectedFighter === "scissors" || this.roboPlayer.selectedFighter ===  "lizard")) {
+    if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection ===  "lizard")) {
       console.log("User wins")
-    } else if (this.humanPlayer.selectedFighter === "paper" && (this.roboPlayer.selectedFighter === "rock" || this.roboPlayer.selectedFighter === "alien")) {
+      this.hasWinner = true;
+    } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
       console.log("User  wins");
-    } else if (this.humanPlayer.selectedFighter === "scissors" && (this.roboPlayer.selectedFighter === "paper" || this.roboPlayer.selectedFighter === "lizard")) {
+      this.hasWinner = true;
+    } else if (this.humanPlayer.selection === "scissors" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "lizard")) {
       console.log("User wins")
-    } else if (this.humanPlayer.selectedFighter === "lizard" && (this.roboPlayer.selectedFighter === "paper" || this.roboPlayer.selectedFighter === "alien")) {
+      this.hasWinner = true;
+    } else if (this.humanPlayer.selection === "lizard" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "alien")) {
       console.log("User wins")
-    } else if (this.humanPlayer.selectedFighter === "alien" && (this.roboPlayer.selectedFighter === "scissors" || this.roboPlayer.selectedFighter === "rock")) {
+      this.hasWinner = true;
+    } else if (this.humanPlayer.selection === "alien" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "rock")) {
       console.log("User wins")
+      this.hasWinner = true;
     } else {
       console.log("Computer wins")
+      this.hasWinner = true;
     }
     setTimeout(resetGame, 1000)
   }
+  determineDraw() {
+    if (this.humanPlayer.selection === this.roboPlayer.selection) {
+      this.isDraw = true;
+      this.hasWinner =  false;
+    }
+  }
 }
-
-//When Player wins, save to localStorage and update innerHTML
