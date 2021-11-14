@@ -114,7 +114,8 @@ h5 {
   margin-bottom: -2%;
 }
 
-.classic-player-icons > button {
+.classic-player-icons > button,
+.difficult-player-icons > button {
   background-color: transparent;
   border: none;
   width: 35%;
@@ -128,6 +129,11 @@ h5 {
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+}
+
+img {
+  width: 100%;
+  height: 100%;
 }
 
 .hidden  {

@@ -7,25 +7,29 @@ class Player {
   }
   saveWinsToStorage() {
     var stringedWin = JSON.stringify(this);
-    localStorage.setItem(`${this.id}`, stringedWin);
+    localStorage.setItem(`${this.name}`, stringedWin);
   }
 
   retrieveWinsFromStorage() {
-    var storedWin = localStorage.getItem(`${this.id}`);
+    var storedWin = localStorage.getItem(`${this.name}`);
     var parsedWin = JSON.parse(storedWin);
+    return parsedWin
+    console.log(parsedWin)
   }
   humanTurn() {
+    console.log("7")
+
     this.selection = event.target.id
-    console.log("human selection",  human.selection)
   }
   robotTurn() {
+    console.log("8")
     var classicChoices = ["rock", "paper", "scissors"];
     var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
       if (currentGame.type === "classic") { this.selection = classicChoices[getRandomIndex(classicChoices)]
-      console.log("robot classic:", this.selection)
+        displayCompChoice()
     } else if (currentGame.type === "difficult") {
       this.selection = difficultChoices[getRandomIndex(difficultChoices)]
-      console.log("robot difficult:", this.selection)
+      displayCompChoice()
     }
   }
 }

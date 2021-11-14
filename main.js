@@ -3,6 +3,8 @@ var rock = document.getElementById("rock");
 var scissors = document.getElementById("scissors");
 var alien = document.getElementById("alien");
 var lizard = document.getElementById("lizard");
+var humanWins = document.getElementById("humanWins");
+var compWins = document.getElementById("compWins");
 var classicIcons = document.getElementById("classicPlayerIcons");
 var difficultIcons = document.getElementById("difficultPlayerIcons");
 var classicGameBtn = document.getElementById("classicChoice");
@@ -11,17 +13,27 @@ var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
 var selectionIcons = document.querySelectorAll("selectionIcons")
 
-var currentGame = new Game();
-var human =  currentGame.humanPlayer;
-var robot = currentGame.roboPlayer;
+var currentGame;
+var human;
+var robot;
 
 gameBoard.addEventListener("click", function()  {
   currentGame.chooseGame()
 });
 changeGameBtn.addEventListener("click", showHomePage)
-classicIcons.addEventListener("click", selectIcon)
 
+window.addEventListener("load", function() {
+  currentGame = new Game();
+  human = currentGame.humanPlayer;
+  robot = currentGame.roboPlayer;
+  var humanRetrieve = human.retrieveWinsFromStorage()
+  var roboRetrieve = robot.retrieveWinsFromStorage()
+  displayWins(humanRetrieve)
+  displayWins(roboRetrieve)
+  console.log("1")
+})
 
+//General Functions
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
 }
@@ -32,84 +44,9 @@ function show(elements) {
   }
 }
 
-
 function hide(elements) {
   for (var i = 0; i < elements.length; i++) {
     elements[i].classList.add("hidden");
-  }
-}
-
-function hideHomePage() {
-  hide([classicGameBtn, difficultGameBtn]);
-  show([classicIcons,changeGameBtn]);
-}
-
-function showHomePage() {
-  show([classicGameBtn, difficultGameBtn]);
-  hide([classicIcons, difficultIcons, changeGameBtn]);
-}
-
-function playGame() {
-  if (currentGame.type === "classic") {
-    displayClassic()
-  } else {
-    displayDifficult();
-  }
-}
-
-function displayClassic() {
-var classicChoices = ["rock", "paper", "scissors"];
-  console.log("AMC at 10")
-  showIt(classicChoices)
-}
-
-function displayDifficult() {
-  show([classicIcons, difficultIcons])
-}
-
-
-function updateWins() {
-  if (determineWinner() === "User wins") {
-    human.wins++;
-    human.saveWinsToStorage()
-    var playerOneWins = human.retrieveWinsFromStorage()
-    "Wins:0 in  HTML".innerText = playerOneWins
-  } else if (determineWinner() ===  "Computer wins") {
-    robot.wins++;
-    robot.saveWinsToStorage()
-    var  playerTwoWins = robot.retrieveWinsFromStorage();
-    "Wins:0 in  HTML".innerText = playerTwoWins
-  }
-}
-
-function resetGame() {
-  show([changeGameBtn])
-  if (currentGame.type  === "classic") {
-    console.log("reset classic")
-    hide([rock, paper, scissors])
-    displayClassic()
-  } else {
-    console.log("reset difficult")
-    hide([classicIcons, difficultIcons])
-    displayDifficult()
-  }
-}
-
-function displayCompChoice() {
-    showIt([robot.selection])
-}
-
-function hide(elements) {
-  for (var i = 0; i < elements.length; i++) {
-    elements[i].classList.add("hidden");
-  }
-}
-
-
-function hideIt(arrayOfStrings) {
-  for (var i = 0; i < arrayOfStrings.length; i++) {
-    var element = document.getElementById(arrayOfStrings[i]);
-    element.classList.add("hidden");
   }
 }
 
@@ -120,20 +57,90 @@ function showIt(arrayOfStrings) {
   }
 }
 
+//Hide and Display  Home Page
 
-function selectIcon(event) {
-var selection = event.target.closest("img").id;
-console.log("selection: ", selection)
+function hideHomePage() {
+  hide([classicGameBtn, difficultGameBtn]);
+  console.log("3")
+}
+
+function showHomePage() {
+  show([classicGameBtn, difficultGameBtn]);
+  hide([classicIcons, difficultIcons, changeGameBtn]);
+}
+
+
+//Play Game
+function displayGame() {
+  if (currentGame.type === "classic") {
+    console.log("4 Classic")
+    show([classicIcons, rock, paper, scissors])
+  } else {
+    console.log("4 Difficult")
+    show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
+  }
+}
+
+function playGame() {
   human.humanTurn()
-  hideIcons(human.selection)
   robot.robotTurn()
-  displayCompChoice()
-  currentGame.determineDraw()
   currentGame.determineWinner()
 }
 
-function hideIcons() {
-  var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"]
-  difficultChoices.splice(human.selection, 1);
-  hideIt(difficultChoices)
+function displayCompChoice() {
+  showIt([robot.selection])
 }
+
+function updateWins(player) {
+  player.wins++
+  player.saveWinsToStorage()
+  var playerWins = player.retrieveWinsFromStorage()
+  displayWins(playerWins)
+}
+
+function displayWins(player) {
+  if (player.name === "Human") {
+    humanWins.innerText = player.wins;
+  } else {
+    compWins.innerText = player.wins;
+  }
+}
+
+
+function resetGame() {
+  console.log("10")
+  show([changeGameBtn])
+  displayGame()
+}
+
+//Icons and Event Listeners
+scissors.addEventListener("click", function() {
+  console.log("6")
+  hide[(rock, paper, lizard, alien)]
+  playGame()
+})
+
+paper.addEventListener("click", function() {
+  console.log("6")
+  hide([scissors, rock, lizard, alien])
+  playGame()
+})
+
+alien.addEventListener("click", function() {
+  console.log("6")
+  hide([scissors, rock, lizard, paper])
+  playGame()
+})
+
+lizard.addEventListener("click", function() {
+  console.log("6")
+  hide([scissors, rock, alien, paper]);
+  playGame()
+})
+
+
+rock.addEventListener("click", function() {
+  console.log("6")
+  hide([scissors, paper, lizard, alien]);
+  playGame()
+})
