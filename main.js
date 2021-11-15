@@ -12,7 +12,6 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
-var selectionIcons = document.querySelectorAll("selectionIcons")
 
 var currentGame;
 var human;
@@ -105,17 +104,12 @@ function updateWins(player) {
   player.wins++
   player.saveWinsToStorage()
   var playerWins = player.retrieveWinsFromStorage()
-  displayWins(playerWins)
+  displayWins()
 }
 
-function displayWins(player) {
-  if (player.name === "Human") {
-    humanWins.innerText = player.wins;
-    subTitle.innerText = "User wins!"
-  } else if (player.name === "Computer") {
-    compWins.innerText = player.wins;
-    subTitle.innerText = "Computer wins!"
-  }
+function displayWins() {
+  humanWins.innerText = human.retrieveWinsFromStorage()
+  compWins.innerText = robot.retrieveWinsFromStorage()
 }
 
 

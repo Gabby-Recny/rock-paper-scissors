@@ -23,7 +23,6 @@ class Game {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;
       this.hasWinner = false;
-      console.log("draw")
     } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
       this.hasWinner = true;
       updateWins(human)
