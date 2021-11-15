@@ -9,7 +9,6 @@ class Player {
     var stringedWin = JSON.stringify(this);
     localStorage.setItem(`${this.name}`, stringedWin);
   }
-
   retrieveWinsFromStorage() {
     var storedWin = localStorage.getItem(`${this.name}`);
     var parsedWin = JSON.parse(storedWin);
@@ -17,12 +16,12 @@ class Player {
     console.log(parsedWin)
   }
   humanTurn() {
-    console.log("7")
-
-    this.selection = event.target.id
+    console.log("6")
+    this.selection = event.target.closest("img").id
+    console.log(human.selection)
   }
   robotTurn() {
-    console.log("8")
+    console.log("7")
     var classicChoices = ["rock", "paper", "scissors"];
     var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
       if (currentGame.type === "classic") { this.selection = classicChoices[getRandomIndex(classicChoices)]
