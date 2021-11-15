@@ -11,7 +11,6 @@ class Game {
       this.isDraw = true;
       this.hasWinner = false;
       displayDraw(this.humanPlayer.selection)
-      console.log("tie")
     } else {
       this.determineWinner()
     }

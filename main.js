@@ -25,9 +25,7 @@ paper.addEventListener("click", selectPaper)
 scissors.addEventListener("click", selectScissors)
 lizard.addEventListener("click", selectLizard)
 rock.addEventListener("click", selectRock)
-
-//Does not work  on new Game instation after first game determined
-window.addEventListener("load", displayPrevWins())
+window.addEventListener("load", displayPrevWins)
 
 //General Functions
 function getRandomIndex(array) {
@@ -82,6 +80,7 @@ function displayDiff() {
 function playGame() {
   human.humanTurn()
   robot.robotTurn()
+  displayCompChoice()
   currentGame.determineDraw()
   displayWins()
 }
@@ -103,7 +102,6 @@ function displayDraw(selectedIcon) {
 }
 
 function resetGame() {
-  console.log("9")
   show([changeGameBtn])
   if (currentGame.type === "classic") {
     displayClassic()
@@ -112,8 +110,7 @@ function resetGame() {
   }
 }
 
-
-//Refresh
+//Page Refresh
 function displayPrevWins() {
   currentGame = new Game();
   human = currentGame.humanPlayer;

@@ -15,19 +15,15 @@ class Player {
     return parsedWin
   }
   humanTurn() {
-    console.log("6")
     this.selection = event.target.closest("img").id
     console.log(human.selection)
   }
   robotTurn() {
-    console.log("7")
     var classicChoices = ["rock", "paper", "scissors"];
     var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
       if (currentGame.type === "classic") { this.selection = classicChoices[getRandomIndex(classicChoices)]
-        displayCompChoice()
     } else if (currentGame.type === "difficult") {
       this.selection = difficultChoices[getRandomIndex(difficultChoices)]
-      displayCompChoice()
     }
   }
 }
