@@ -6,19 +6,6 @@ class Game {
     this.humanPlayer = new Player("Human", "Face");
     this.roboPlayer = new Player("Computer", "Laptop");
   }
-  //Buggy because does not click on words, only buttons.
-  chooseGame() {
-    console.log("2")
-    if (event.target.id === "classicChoice") {
-      this.type = "classic";
-      hideHomePage()
-      displayGame()
-    } else if (event.target.id === "difficultChoice") {
-      this.type = "difficult";
-      hideHomePage()
-      displayGame()
-    }
-  }
   determineWinner() {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;

@@ -18,9 +18,9 @@ var currentGame;
 var human;
 var robot;
 
-gameBoard.addEventListener("click", function()  {
-  currentGame.chooseGame()
-});
+
+classicGameBtn.addEventListener("click", displayClassic)
+difficultGameBtn.addEventListener("click", displayDiff)
 changeGameBtn.addEventListener("click", showHomePage)
 
 //Does not work  on new Game instation after first game determined
@@ -32,7 +32,7 @@ window.addEventListener("load", function() {
   var roboRetrieve = robot.retrieveWinsFromStorage()
   displayWins(humanRetrieve)
   displayWins(roboRetrieve)
-  console.log("1")
+  console.log("2")
   subTitle.innerText = "Welcome to the Jungle"
 })
 
@@ -75,16 +75,20 @@ function showHomePage() {
 
 
 //Play Game
-function displayGame() {
-  if (currentGame.type === "classic") {
-    console.log("4 Classic")
-    subTitle.innerText = "Pick Your Fighter!"
-    show([classicIcons, rock, paper, scissors])
-  } else {
-    console.log("4 Difficult")
-    subTitle.innerText = "Pick Your Fighter!"
-    show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
-  }
+function displayClassic() {
+  hideHomePage()
+  currentGame.type = "classic";
+  console.log("4 Classic")
+  subTitle.innerText = "Pick Your Fighter!"
+  show([classicIcons, rock, paper, scissors])
+}
+
+function displayDiff() {
+  hideHomePage()
+  currentGame.type = "difficult"
+  console.log("4 Difficult")
+  subTitle.innerText = "Pick Your Fighter!"
+  show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
 }
 
 function playGame() {
@@ -121,7 +125,11 @@ function displayDraw() {
 function resetGame() {
   console.log("9")
   show([changeGameBtn])
-  displayGame()
+  if (currentGame.type === "classic") {
+    displayClassic()
+  } else {
+    displayDiff()
+  }
 }
 
 //Icons
