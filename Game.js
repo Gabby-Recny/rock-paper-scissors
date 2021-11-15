@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.hasWinner = false;
+    this.hasWinner = null;
     this.isDraw = false;
     this.type = null;
     this.humanPlayer = new Player("Human", "Face");
@@ -11,26 +11,34 @@ class Game {
       this.isDraw = true;
       this.hasWinner = false;
       displayDraw(this.humanPlayer.selection)
+      console.log("tie")
     } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
       this.hasWinner = true;
-      updateWins(human)
+      this.updateWins(human)
     } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
       this.hasWinner = true;
-      updateWins(human)
+      this.updateWins(human)
     } else if (this.humanPlayer.selection === "scissors" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "lizard")) {
       this.hasWinner = true;
-      updateWins(human)
+      this.updateWins(human)
     } else if (this.humanPlayer.selection === "lizard" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "alien")) {
       this.hasWinner = true;
-      updateWins(human)
+      this.updateWins(human)
     } else if (this.humanPlayer.selection === "alien" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "rock")) {
       this.hasWinner = true;
-      updateWins(human)
+      this.updateWins(human)
     } else {
       this.hasWinner = true;
-      updateWins(robot)
+      this.updateWins(robot)
     }
     console.log("8")
     setTimeout(resetGame, 500)
+  }
+  updateWins(player) {
+    if (this.hasWinner) {
+    player.wins++
+    player.saveWinsToStorage()
+    var playerWins = player.retrieveWinsFromStorage()
+    }
   }
 }
