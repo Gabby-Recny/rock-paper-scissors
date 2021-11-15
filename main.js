@@ -23,7 +23,7 @@ difficultGameBtn.addEventListener("click", displayDiff)
 changeGameBtn.addEventListener("click", showHomePage)
 alien.addEventListener("click", selectAlien)
 paper.addEventListener("click", selectPaper)
-scissors.addEventListener("click", selectRock)
+scissors.addEventListener("click", selectScissors)
 lizard.addEventListener("click", selectLizard)
 rock.addEventListener("click", selectRock)
 
@@ -163,5 +163,10 @@ function selectLizard() {
 function selectRock() {
   console.log("5")
   hide([scissors, paper, lizard, alien]);
+  playGame()
+}
+function selectScissors() {
+  console.log("5")
+  hide([ paper, lizard, alien, rock])
   playGame()
 }
