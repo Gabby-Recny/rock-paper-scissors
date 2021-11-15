@@ -27,17 +27,7 @@ lizard.addEventListener("click", selectLizard)
 rock.addEventListener("click", selectRock)
 
 //Does not work  on new Game instation after first game determined
-window.addEventListener("load", function() {
-  currentGame = new Game();
-  human = currentGame.humanPlayer;
-  robot = currentGame.roboPlayer;
-  var humanRetrieve = human.retrieveWinsFromStorage()
-  var roboRetrieve = robot.retrieveWinsFromStorage()
-  displayWins()
-  displayWins()
-  console.log("2")
-  subTitle.innerText = "Welcome to the Jungle"
-})
+window.addEventListener("load", displayPrevWins())
 
 //General Functions
 function getRandomIndex(array) {
@@ -66,7 +56,6 @@ function showIt(arrayOfStrings) {
 //Hide and Display  Home Page
 function hideHomePage() {
   hide([classicGameBtn, difficultGameBtn]);
-  console.log("3")
 }
 
 function showHomePage() {
@@ -79,7 +68,6 @@ function showHomePage() {
 function displayClassic() {
   hideHomePage()
   currentGame.type = "classic";
-  console.log("4 Classic")
   subTitle.innerText = "Pick Your Fighter!"
   show([classicIcons, rock, paper, scissors])
 }
@@ -87,7 +75,6 @@ function displayClassic() {
 function displayDiff() {
   hideHomePage()
   currentGame.type = "difficult"
-  console.log("4 Difficult")
   subTitle.innerText = "Pick Your Fighter!"
   show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
 }
@@ -95,7 +82,7 @@ function displayDiff() {
 function playGame() {
   human.humanTurn()
   robot.robotTurn()
-  currentGame.determineWinner()
+  currentGame.determineDraw()
   displayWins()
 }
 
@@ -125,38 +112,43 @@ function resetGame() {
   }
 }
 
+
+//Refresh
+function displayPrevWins() {
+  currentGame = new Game();
+  human = currentGame.humanPlayer;
+  robot = currentGame.roboPlayer;
+  displayWins()
+  displayWins()
+  subTitle.innerText = "Welcome to the Jungle"
+}
+
 //Select Icons
 function selectRock() {
-  console.log("5")
   hide[(rock, paper, lizard, alien)]
   playGame()
 }
 
 function selectPaper() {
-  console.log("5")
   hide([scissors, rock, lizard, alien])
   playGame()
 }
 
 function selectAlien() {
-  console.log("5")
   hide([scissors, rock, lizard, paper])
   playGame()
 }
 
 function selectLizard() {
-  console.log("5")
   hide([scissors, rock, alien, paper]);
   playGame()
 }
 
 function selectRock() {
-  console.log("5")
   hide([scissors, paper, lizard, alien]);
   playGame()
 }
 function selectScissors() {
-  console.log("5")
   hide([ paper, lizard, alien, rock])
   playGame()
 }
