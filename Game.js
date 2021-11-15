@@ -31,6 +31,6 @@ class Game {
       updateWins(robot)
     }
     console.log("8")
-    setTimeout(resetGame, 500)
+    setTimeout(resetGame, 1000)
   }
 }

@@ -12,7 +12,6 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
-var selectionIcons = document.querySelectorAll("selectionIcons")
 
 var currentGame;
 var human;
