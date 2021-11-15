@@ -118,6 +118,7 @@ function displayWins(player) {
   }
 }
 
+
 function displayDraw() {
   subTitle.innerText = "It's a draw!"
 }
