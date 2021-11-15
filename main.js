@@ -17,10 +17,14 @@ var currentGame;
 var human;
 var robot;
 
-
 classicGameBtn.addEventListener("click", displayClassic)
 difficultGameBtn.addEventListener("click", displayDiff)
 changeGameBtn.addEventListener("click", showHomePage)
+alien.addEventListener("click", selectAlien)
+paper.addEventListener("click", selectPaper)
+scissors.addEventListener("click", selectRock)
+lizard.addEventListener("click", selectLizard)
+rock.addEventListener("click", selectRock)
 
 //Does not work  on new Game instation after first game determined
 window.addEventListener("load", function() {
@@ -60,7 +64,6 @@ function showIt(arrayOfStrings) {
 }
 
 //Hide and Display  Home Page
-
 function hideHomePage() {
   hide([classicGameBtn, difficultGameBtn]);
   console.log("3")
@@ -72,8 +75,7 @@ function showHomePage() {
   hide([classicIcons, difficultIcons, changeGameBtn]);
 }
 
-
-//Play Game
+//Main Game
 function displayClassic() {
   hideHomePage()
   currentGame.type = "classic";
@@ -106,7 +108,6 @@ function displayWins() {
   compWins.innerText = robot.retrieveWinsFromStorage()
 }
 
-
 function displayDraw() {
   subTitle.innerText = "It's a draw!"
 }
@@ -121,34 +122,33 @@ function resetGame() {
   }
 }
 
-//Icons
-scissors.addEventListener("click", function() {
+//Select Icons
+function selectRock() {
   console.log("5")
   hide[(rock, paper, lizard, alien)]
   playGame()
-})
+}
 
-paper.addEventListener("click", function() {
+function selectPaper() {
   console.log("5")
   hide([scissors, rock, lizard, alien])
   playGame()
-})
+}
 
-alien.addEventListener("click", function() {
+function selectAlien() {
   console.log("5")
   hide([scissors, rock, lizard, paper])
   playGame()
-})
+}
 
-lizard.addEventListener("click", function() {
+function selectLizard() {
   console.log("5")
   hide([scissors, rock, alien, paper]);
   playGame()
-})
+}
 
-
-rock.addEventListener("click", function() {
+function selectRock() {
   console.log("5")
   hide([scissors, paper, lizard, alien]);
   playGame()
-})
+}

@@ -6,19 +6,6 @@ class Game {
     this.humanPlayer = new Player("Human", "Face");
     this.roboPlayer = new Player("Computer", "Laptop");
   }
-  //Buggy because does not click on words, only buttons.
-  chooseGame() {
-    console.log("2")
-    if (event.target.id === "classicChoice") {
-      this.type = "classic";
-      hideHomePage()
-      displayGame()
-    } else if (event.target.id === "difficultChoice") {
-      this.type = "difficult";
-      hideHomePage()
-      displayGame()
-    }
-  }
   determineWinner() {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;
@@ -28,7 +15,6 @@ class Game {
       this.hasWinner = true;
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
-      console.log("User  wins");
       this.hasWinner = true;
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "scissors" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "lizard")) {
@@ -41,11 +27,10 @@ class Game {
       this.hasWinner = true;
       this.updateWins(human)
     } else {
-      console.log("Computer wins")
       this.hasWinner = true;
       this.updateWins(robot)
     }
-    console.log("9")
+    console.log("8")
     setTimeout(resetGame, 500)
   }
   updateWins(player) {
