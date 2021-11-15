@@ -6,18 +6,18 @@ class Player {
   this.selection = null;
   }
   saveWinsToStorage() {
-    localStorage.setItem(`${this.name}`, this.wins);
+      var stringedWin = JSON.stringify(this);
+      localStorage.setItem(`${this.name}`, stringedWin);
   }
 
   retrieveWinsFromStorage() {
     var storedWin = localStorage.getItem(`${this.name}`);
     var parsedWin = JSON.parse(storedWin);
-    return parsedWin
     console.log(parsedWin)
+    return parsedWin
   }
   humanTurn() {
     console.log("7")
-
     this.selection = event.target.id
   }
   robotTurn() {
