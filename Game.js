@@ -6,13 +6,19 @@ class Game {
     this.humanPlayer = new Player("Human", "Face");
     this.roboPlayer = new Player("Computer", "Laptop");
   }
-  determineWinner() {
+  determineDraw() {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;
       this.hasWinner = false;
       displayDraw(this.humanPlayer.selection)
       console.log("tie")
-    } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
+    } else {
+      this.determineWinner()
+    }
+    setTimeout(resetGame, 500)
+  }
+  determineWinner() {
+    if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
       this.hasWinner = true;
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
@@ -31,8 +37,6 @@ class Game {
       this.hasWinner = true;
       this.updateWins(robot)
     }
-    console.log("8")
-    setTimeout(resetGame, 500)
   }
   updateWins(player) {
     if (this.hasWinner) {
