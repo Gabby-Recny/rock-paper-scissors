@@ -9,7 +9,6 @@ class Player {
     var stringedWin = JSON.stringify(this);
     localStorage.setItem(`${this.name}`, stringedWin);
   }
-
   retrieveWinsFromStorage() {
     var storedWin = localStorage.getItem(`${this.name}`);
     var parsedWin = JSON.parse(storedWin);
@@ -18,8 +17,8 @@ class Player {
   }
   humanTurn() {
     console.log("6")
-
-    this.selection = event.target.id
+    this.selection = event.target.closest("img").id
+    console.log(human.selection)
   }
   robotTurn() {
     console.log("7")
