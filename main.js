@@ -12,7 +12,6 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
-var selectionIcons = document.querySelectorAll("selectionIcons")
 
 var currentGame;
 var human;
@@ -34,8 +33,8 @@ window.addEventListener("load", function() {
   robot = currentGame.roboPlayer;
   var humanRetrieve = human.retrieveWinsFromStorage()
   var roboRetrieve = robot.retrieveWinsFromStorage()
-  displayWins(humanRetrieve)
-  displayWins(roboRetrieve)
+  displayWins()
+  displayWins()
   console.log("2")
   subTitle.innerText = "Welcome to the Jungle"
 })
@@ -76,7 +75,6 @@ function showHomePage() {
   hide([classicIcons, difficultIcons, changeGameBtn]);
 }
 
-
 //Main Game
 function displayClassic() {
   hideHomePage()
@@ -98,27 +96,16 @@ function playGame() {
   human.humanTurn()
   robot.robotTurn()
   currentGame.determineWinner()
+  displayWins()
 }
 
 function displayCompChoice() {
   showIt([robot.selection])
 }
 
-function updateWins(player) {
-  player.wins++
-  player.saveWinsToStorage()
-  var playerWins = player.retrieveWinsFromStorage()
-  displayWins(playerWins)
-}
-
-function displayWins(player) {
-  if (player.name === "Human") {
-    humanWins.innerText = player.wins;
-    subTitle.innerText = "User wins!"
-  } else if (player.name === "Computer") {
-    compWins.innerText = player.wins;
-    subTitle.innerText = "Computer wins!"
-  }
+function displayWins() {
+  humanWins.innerText = human.retrieveWinsFromStorage()
+  compWins.innerText = robot.retrieveWinsFromStorage()
 }
 
 function displayDraw() {
