@@ -10,7 +10,7 @@ class Game {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;
       this.hasWinner = false;
-      displayDraw()
+      displayDraw(this.humanPlayer.selection)
     } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
       this.hasWinner = true;
       updateWins(human)
@@ -31,6 +31,6 @@ class Game {
       updateWins(robot)
     }
     console.log("8")
-    setTimeout(resetGame, 1000)
+    setTimeout(resetGame, 500)
   }
 }

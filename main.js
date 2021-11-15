@@ -120,8 +120,11 @@ function displayWins(player) {
   }
 }
 
-function displayDraw() {
+function displayDraw(selectedIcon) {
   subTitle.innerText = "It's a draw!"
+  gameBoard.innerHTML += `<button class="player-icons">
+    <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
+  </button>`
 }
 
 function resetGame() {
