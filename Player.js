@@ -17,12 +17,12 @@ class Player {
     console.log(parsedWin)
   }
   humanTurn() {
-    console.log("7")
+    console.log("6")
 
     this.selection = event.target.id
   }
   robotTurn() {
-    console.log("8")
+    console.log("7")
     var classicChoices = ["rock", "paper", "scissors"];
     var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
       if (currentGame.type === "classic") { this.selection = classicChoices[getRandomIndex(classicChoices)]

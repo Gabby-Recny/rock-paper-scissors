@@ -23,12 +23,11 @@ class Game {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;
       this.hasWinner = false;
-      console.log("draw")
+      displayDraw()
     } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
       this.hasWinner = true;
       updateWins(human)
     } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
-      console.log("User  wins");
       this.hasWinner = true;
       updateWins(human)
     } else if (this.humanPlayer.selection === "scissors" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "lizard")) {
@@ -41,11 +40,10 @@ class Game {
       this.hasWinner = true;
       updateWins(human)
     } else {
-      console.log("Computer wins")
       this.hasWinner = true;
       updateWins(robot)
     }
-    console.log("9")
+    console.log("8")
     setTimeout(resetGame, 500)
   }
 }

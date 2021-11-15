@@ -5,6 +5,7 @@ var alien = document.getElementById("alien");
 var lizard = document.getElementById("lizard");
 var humanWins = document.getElementById("humanWins");
 var compWins = document.getElementById("compWins");
+var subTitle = document.querySelector("h4");
 var classicIcons = document.getElementById("classicPlayerIcons");
 var difficultIcons = document.getElementById("difficultPlayerIcons");
 var classicGameBtn = document.getElementById("classicChoice");
@@ -22,6 +23,7 @@ gameBoard.addEventListener("click", function()  {
 });
 changeGameBtn.addEventListener("click", showHomePage)
 
+//Does not work  on new Game instation after first game determined
 window.addEventListener("load", function() {
   currentGame = new Game();
   human = currentGame.humanPlayer;
@@ -31,6 +33,7 @@ window.addEventListener("load", function() {
   displayWins(humanRetrieve)
   displayWins(roboRetrieve)
   console.log("1")
+  subTitle.innerText = "Welcome to the Jungle"
 })
 
 //General Functions
@@ -65,6 +68,7 @@ function hideHomePage() {
 }
 
 function showHomePage() {
+  subTitle.innerText = "Welcome to the Jungle"
   show([classicGameBtn, difficultGameBtn]);
   hide([classicIcons, difficultIcons, changeGameBtn]);
 }
@@ -74,9 +78,11 @@ function showHomePage() {
 function displayGame() {
   if (currentGame.type === "classic") {
     console.log("4 Classic")
+    subTitle.innerText = "Pick Your Fighter!"
     show([classicIcons, rock, paper, scissors])
   } else {
     console.log("4 Difficult")
+    subTitle.innerText = "Pick Your Fighter!"
     show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
   }
 }
@@ -101,46 +107,51 @@ function updateWins(player) {
 function displayWins(player) {
   if (player.name === "Human") {
     humanWins.innerText = player.wins;
-  } else {
+    subTitle.innerText = "User wins!"
+  } else if (player.name === "Computer") {
     compWins.innerText = player.wins;
+    subTitle.innerText = "Computer wins!"
   }
 }
 
+function displayDraw() {
+  subTitle.innerText = "It's a draw!"
+}
 
 function resetGame() {
-  console.log("10")
+  console.log("9")
   show([changeGameBtn])
   displayGame()
 }
 
-//Icons and Event Listeners
+//Icons
 scissors.addEventListener("click", function() {
-  console.log("6")
+  console.log("5")
   hide[(rock, paper, lizard, alien)]
   playGame()
 })
 
 paper.addEventListener("click", function() {
-  console.log("6")
+  console.log("5")
   hide([scissors, rock, lizard, alien])
   playGame()
 })
 
 alien.addEventListener("click", function() {
-  console.log("6")
+  console.log("5")
   hide([scissors, rock, lizard, paper])
   playGame()
 })
 
 lizard.addEventListener("click", function() {
-  console.log("6")
+  console.log("5")
   hide([scissors, rock, alien, paper]);
   playGame()
 })
 
 
 rock.addEventListener("click", function() {
-  console.log("6")
+  console.log("5")
   hide([scissors, paper, lizard, alien]);
   playGame()
 })
