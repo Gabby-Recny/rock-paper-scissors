@@ -12,7 +12,7 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
-var drawArea = document.getElementById("drawArea");
+var drawArea =  document.getElementById("drawArea")
 
 var currentGame;
 var human;
@@ -26,17 +26,7 @@ paper.addEventListener("click", selectPaper)
 scissors.addEventListener("click", selectScissors)
 lizard.addEventListener("click", selectLizard)
 rock.addEventListener("click", selectRock)
-
-//Does not work  on new Game instation after first game determined
-window.addEventListener("load", function() {
-  currentGame = new Game();
-  human = currentGame.humanPlayer;
-  robot = currentGame.roboPlayer;
-  var humanRetrieve = human.retrieveWinsFromStorage()
-  var roboRetrieve = robot.retrieveWinsFromStorage()
-  displayWins()
-  subTitle.innerText = "Welcome to the Jungle"
-})
+window.addEventListener("load", displayPrevWins)
 
 //General Functions
 function getRandomIndex(array) {
@@ -55,11 +45,18 @@ function hide(elements) {
   }
 }
 
-function showIt(arrayOfStrings) {
-  for (var i = 0; i < arrayOfStrings.length; i++) {
-    var element = document.getElementById(arrayOfStrings[i]);
-    element.classList.remove("hidden");
-  }
+
+function showIt(element) {
+  var icon = element.toString();
+  var newIcon = document.getElementById(icon);
+  newIcon.classList.remove("hidden");
+
+  // console.log("1", arrayOfStrings)
+  // for (var i = 0; i < arrayOfStrings.length; i++) {
+  //   var element = document.getElementById(arrayOfStrings[i]);
+  //   element.classList.remove("hidden");
+  //   console.log("2",  element)
+  // }
 }
 
 //Hide and Display  Home Page
@@ -91,8 +88,12 @@ function displayDiff() {
 function playGame() {
   human.humanTurn()
   robot.robotTurn()
+  displayCompChoice()
   currentGame.determineWinner()
+  // displayDraw(this.robot.selection)
   displayWins()
+  displayAnnoucement()
+  setTimeout(resetGame, 1500)
 }
 
 function displayCompChoice() {
@@ -100,19 +101,46 @@ function displayCompChoice() {
 }
 
 function displayWins() {
-  humanWins.innerText = human.retrieveWinsFromStorage()
+  if (!localStorage.Human) {
+    humanWins.innerText = 0;
+  } else {
+    humanWins.innerText = human.retrieveWinsFromStorage()
+  }
+  if (!localStorage.Computer) {
+    compWins.innerText = 0;
+  } else {
   compWins.innerText = robot.retrieveWinsFromStorage()
+  }
+}
+
+function displayAnnoucement() {
+  if (currentGame.winner === "Human" ) {
+    subTitle.innerText =  `👩‍💻 Human wins! 👩‍💻`
+  } else if (currentGame.winner === "Computer") {
+    subTitle.innerText =  `💻 Computer wins! 💻`
+  }  else {
+    subTitle.innerText =  `It's a draw`
+    displayDraw(human.selection)
+  }
 }
 
 function displayDraw(selectedIcon) {
-  subTitle.innerText = "It's a draw!"
-  drawArea.innerHTML += `<button class="player-icons">
+  if (currentGame.isDraw) {
+  show([drawArea])
+  drawArea.innerHTML += `<button class="player-buttons">
     <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
   </button>`
+  }
+}
+
+function resetDraw() {
+    hide([drawArea])
+    drawArea.innerHTML = ""
+    currentGame.isDraw = false;
 }
 
 function resetGame() {
-  drawArea.innerHTML = ""
+  resetDraw()
   show([changeGameBtn])
   if (currentGame.type === "classic") {
     displayClassic()
@@ -121,12 +149,16 @@ function resetGame() {
   }
 }
 
-//Select Icons
-function selectRock() {
-  hide[(rock, paper, lizard, alien)]
-  playGame()
+//Page Refresh
+function displayPrevWins() {
+  currentGame = new Game();
+  human = currentGame.humanPlayer;
+  robot = currentGame.roboPlayer;
+  displayWins()
+  subTitle.innerText = "Welcome to the Jungle"
 }
 
+//Select Icons
 function selectPaper() {
   hide([scissors, rock, lizard, alien])
   playGame()

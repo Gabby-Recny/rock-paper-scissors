@@ -2,7 +2,8 @@ class Player {
   constructor(name, token) {
   this.name = name;
   this.token = token;
-  this.wins = this.retrieveWinsFromStorage() || 0;
+  this.wins = this.retrieveWinsFromStorage();
+  this.difficultChoices = ["rock", "paper", "scissors", "alien", "lizard"];
   this.selection = null;
   }
   saveWinsToStorage() {
@@ -15,16 +16,18 @@ class Player {
     return parsedWin
   }
   humanTurn() {
-    this.selection = event.target.closest("img").id
+    for (var i = 0; i < this.difficultChoices.length; i++) {
+      if (event.target.closest("img").id === this.difficultChoices[i]) {
+        this.selection = this.difficultChoices[i];
+      }
+    }
   }
   robotTurn() {
     var classicChoices = ["rock", "paper", "scissors"];
-    var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
+    var difficultChoices = ["rock", "paper", "scissors", "alien", "lizard"];
       if (currentGame.type === "classic") { this.selection = classicChoices[getRandomIndex(classicChoices)]
-        displayCompChoice()
     } else if (currentGame.type === "difficult") {
       this.selection = difficultChoices[getRandomIndex(difficultChoices)]
-      displayCompChoice()
     }
   }
 }

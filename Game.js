@@ -1,40 +1,40 @@
 class Game {
   constructor() {
-    this.hasWinner = null;
+    this.winner = null;
     this.isDraw = false;
     this.type = null;
-    this.humanPlayer = new Player("Human", "Face");
-    this.roboPlayer = new Player("Computer", "Laptop");
+    this.humanPlayer = new Player("Human", "👩‍💻");
+    this.roboPlayer = new Player("Computer", "💻");
   }
   determineWinner() {
+    console.log("human:  ", this.humanPlayer.selection)
+    console.log("computer: ", this.roboPlayer.selection)
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
+      this.winner = null;
       this.isDraw = true;
-      this.hasWinner = false;
-      displayDraw(this.humanPlayer.selection)
-      console.log("tie")
+      console.log("Draw: ", this.isDraw)
     } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "scissors" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "lizard")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "lizard" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "alien")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "alien" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "rock")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else {
-      this.hasWinner = true;
+      this.winner = "Computer";
       this.updateWins(robot)
     }
-    setTimeout(resetGame, 1000)
   }
   updateWins(player) {
-    if (this.hasWinner) {
+    if (this.winner) {
     player.wins++
     player.saveWinsToStorage()
     var playerWins = player.retrieveWinsFromStorage()
