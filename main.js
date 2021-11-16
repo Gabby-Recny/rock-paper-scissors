@@ -100,9 +100,6 @@ function displayCompChoice() {
   showIt([robot.selection])
 }
 
-
-
-
 function displayWins() {
   if (!localStorage.Human) {
     humanWins.innerText = 0;
@@ -144,7 +141,6 @@ function resetDraw() {
 
 function resetGame() {
   resetDraw()
-  hide([drawArea])
   show([changeGameBtn])
   if (currentGame.type === "classic") {
     displayClassic()
