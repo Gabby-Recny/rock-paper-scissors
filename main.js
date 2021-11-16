@@ -12,6 +12,7 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
+var drawArea = document.getElementById("drawArea");
 
 var currentGame;
 var human;
@@ -34,8 +35,6 @@ window.addEventListener("load", function() {
   var humanRetrieve = human.retrieveWinsFromStorage()
   var roboRetrieve = robot.retrieveWinsFromStorage()
   displayWins()
-  displayWins()
-  console.log("2")
   subTitle.innerText = "Welcome to the Jungle"
 })
 
@@ -110,13 +109,13 @@ function displayWins() {
 
 function displayDraw(selectedIcon) {
   subTitle.innerText = "It's a draw!"
-  gameBoard.innerHTML += `<button class="player-icons">
+  drawArea.innerHTML += `<button class="player-icons">
     <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
   </button>`
 }
 
 function resetGame() {
-  console.log("9")
+  drawArea.innerHTML = ""
   show([changeGameBtn])
   if (currentGame.type === "classic") {
     displayClassic()
