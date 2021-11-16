@@ -112,14 +112,13 @@ function displayAnnoucement() {
     subTitle.innerText =  `💻 Computer wins! 💻`
   }  else {
     subTitle.innerText =  `It's a draw`
-    displayDraw(robot.selection)
+    displayDraw(human.selection)
   }
 }
 
 function displayDraw(selectedIcon) {
   if (currentGame.isDraw) {
-  // show([drawArea])
-  subTitle.innerText = `It's a draw!`
+  show([drawArea])
   drawArea.innerHTML += `<button class="player-buttons">
     <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
   </button>`
@@ -127,7 +126,7 @@ function displayDraw(selectedIcon) {
 }
 
 function resetDraw() {
-    // hide([drawArea])
+    hide([drawArea])
     drawArea.innerHTML = ""
     currentGame.isDraw = false;
 }
