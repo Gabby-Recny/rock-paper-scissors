@@ -3,6 +3,8 @@ class Player {
   this.name = name;
   this.token = token;
   this.wins = this.retrieveWinsFromStorage() || 0;
+  this.classicChoices = ["rock", "paper", "scissors"];
+  this.difficultChoices = ["rock", "paper", "scissors", "alien", "lizard"];
   this.selection = null;
   }
   saveWinsToStorage() {
@@ -15,7 +17,11 @@ class Player {
     return parsedWin
   }
   humanTurn() {
-    this.selection = event.target.closest("img").id
+    for (var i = 0; i <  this.classicChoices.length; i++) {
+      if (event.target.closest("img").id === this.difficultChoices[i]) {
+        this.selection = this.difficultChoices[i]
+      }
+    }
     console.log(human.selection)
   }
   robotTurn() {
