@@ -12,6 +12,7 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
+var drawArea =  document.getElementById("drawArea")
 
 var currentGame;
 var human;
@@ -33,7 +34,6 @@ function getRandomIndex(array) {
 }
 
 function show(elements) {
-  console.log("show")
   for (var i =  0; i < elements.length; i++){
     elements[i].classList.remove("hidden");
   }
@@ -82,9 +82,11 @@ function playGame() {
   human.humanTurn()
   robot.robotTurn()
   displayCompChoice()
-  currentGame.determineDraw()
+  currentGame.determineWinner()
+  displayDraw(this.human.selection)
   displayWins()
   displayAnnoucement()
+  setTimeout(resetGame, 1500)
 }
 
 function displayCompChoice() {
@@ -97,24 +99,26 @@ function displayWins() {
 }
 
 function displayAnnoucement() {
-  if (currentGame.winner === "Human" ) {
+  if (!this.isDraw && currentGame.winner === "Human" ) {
     subTitle.innerText =  `Human wins!`
-  } else if (currentGame.winner === "Computer") {
+  } else if (!this.isDraw && currentGame.winner === "Computer") {
     subTitle.innerText =  `Computer wins!`
   }  else {
     subTitle.innerText =  `It's a draw`
-
   }
 }
 
 function displayDraw(selectedIcon) {
+  if (currentGame.isDraw) {
   subTitle.innerText = "It's a draw!"
-  // gameBoard.innerHTML += `<button class="player-icons">
-  //   <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
-  // </button>`
+  drawArea.innerHTML += `<button class="player-icons">
+    <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
+  </button>`
+  }
 }
 
 function resetGame() {
+  drawArea.innerHTML = ""
   show([changeGameBtn])
   if (currentGame.type === "classic") {
     displayClassic()
@@ -134,11 +138,6 @@ function displayPrevWins() {
 }
 
 //Select Icons
-function selectRock() {
-  hide[(rock, paper, lizard, alien)]
-  playGame()
-}
-
 function selectPaper() {
   hide([scissors, rock, lizard, alien])
   playGame()

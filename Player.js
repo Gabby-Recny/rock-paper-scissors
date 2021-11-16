@@ -3,7 +3,6 @@ class Player {
   this.name = name;
   this.token = token;
   this.wins = this.retrieveWinsFromStorage() || 0;
-  this.classicChoices = ["rock", "paper", "scissors"];
   this.difficultChoices = ["rock", "paper", "scissors", "alien", "lizard"];
   this.selection = null;
   }
@@ -17,16 +16,15 @@ class Player {
     return parsedWin
   }
   humanTurn() {
-    for (var i = 0; i <  this.classicChoices.length; i++) {
+    for (var i = 0; i < this.difficultChoices.length; i++) {
       if (event.target.closest("img").id === this.difficultChoices[i]) {
-        this.selection = this.difficultChoices[i]
+        this.selection = this.difficultChoices[i];
       }
     }
-    console.log(human.selection)
   }
   robotTurn() {
     var classicChoices = ["rock", "paper", "scissors"];
-    var difficultChoices =  ["rock", "paper", "scissors", "alien", "lizard"];
+    var difficultChoices = ["rock", "paper", "scissors", "alien", "lizard"];
       if (currentGame.type === "classic") { this.selection = classicChoices[getRandomIndex(classicChoices)]
     } else if (currentGame.type === "difficult") {
       this.selection = difficultChoices[getRandomIndex(difficultChoices)]

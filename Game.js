@@ -6,17 +6,10 @@ class Game {
     this.humanPlayer = new Player("Human", "Face");
     this.roboPlayer = new Player("Computer", "Laptop");
   }
-  determineDraw() {
+  determineWinner() {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;
-      // displayDraw(this.humanPlayer.selection)
-    } else {
-      this.determineWinner()
-    }
-    setTimeout(resetGame, 3000)
-  }
-  determineWinner() {
-    if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
+    } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
       this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
