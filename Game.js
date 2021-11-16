@@ -7,12 +7,9 @@ class Game {
     this.roboPlayer = new Player("Computer", "💻");
   }
   determineWinner() {
-    console.log("human:  ", this.humanPlayer.selection)
-    console.log("computer: ", this.roboPlayer.selection)
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.winner = null;
       this.isDraw = true;
-      console.log("Draw: ", this.isDraw)
     } else if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
       this.winner = "Human";
       this.updateWins(human)
