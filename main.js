@@ -83,7 +83,7 @@ function playGame() {
   robot.robotTurn()
   displayCompChoice()
   currentGame.determineWinner()
-  displayDraw(this.human.selection)
+  displayDraw(this.robot.selection)
   displayWins()
   displayAnnoucement()
   setTimeout(resetGame, 1500)
@@ -100,9 +100,9 @@ function displayWins() {
 
 function displayAnnoucement() {
   if (!this.isDraw && currentGame.winner === "Human" ) {
-    subTitle.innerText =  `Human wins!`
+    subTitle.innerText =  `👩‍💻 Human wins! 👩‍💻`
   } else if (!this.isDraw && currentGame.winner === "Computer") {
-    subTitle.innerText =  `Computer wins!`
+    subTitle.innerText =  `💻 Computer wins! 💻`
   }  else {
     subTitle.innerText =  `It's a draw`
   }
@@ -110,15 +110,23 @@ function displayAnnoucement() {
 
 function displayDraw(selectedIcon) {
   if (currentGame.isDraw) {
-  subTitle.innerText = "It's a draw!"
-  drawArea.innerHTML += `<button class="player-icons">
+  // show([drawArea])
+  subTitle.innerText = `It's a draw!`
+  drawArea.innerHTML += `<button class="player-buttons">
     <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
   </button>`
   }
 }
 
+function resetDraw() {
+    // hide([drawArea])
+    drawArea.innerHTML = ""
+    currentGame.isDraw = false;
+}
+
 function resetGame() {
-  drawArea.innerHTML = ""
+  resetDraw()
+  hide([drawArea])
   show([changeGameBtn])
   if (currentGame.type === "classic") {
     displayClassic()
@@ -132,7 +140,6 @@ function displayPrevWins() {
   currentGame = new Game();
   human = currentGame.humanPlayer;
   robot = currentGame.roboPlayer;
-  displayWins()
   displayWins()
   subTitle.innerText = "Welcome to the Jungle"
 }

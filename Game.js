@@ -3,8 +3,8 @@ class Game {
     this.winner = null;
     this.isDraw = false;
     this.type = null;
-    this.humanPlayer = new Player("Human", "Face");
-    this.roboPlayer = new Player("Computer", "Laptop");
+    this.humanPlayer = new Player("Human", "👩‍💻");
+    this.roboPlayer = new Player("Computer", "💻");
   }
   determineWinner() {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
