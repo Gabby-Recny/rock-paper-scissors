@@ -2,7 +2,7 @@ class Player {
   constructor(name, token) {
   this.name = name;
   this.token = token;
-  this.wins = this.retrieveWinsFromStorage() || 0;
+  this.wins = this.retrieveWinsFromStorage();
   this.difficultChoices = ["rock", "paper", "scissors", "alien", "lizard"];
   this.selection = null;
   }

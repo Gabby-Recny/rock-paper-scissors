@@ -100,9 +100,20 @@ function displayCompChoice() {
   showIt([robot.selection])
 }
 
+
+
+
 function displayWins() {
-  humanWins.innerText = human.retrieveWinsFromStorage()
+  if (!localStorage.Human) {
+    humanWins.innerText = 0;
+  } else {
+    humanWins.innerText = human.retrieveWinsFromStorage()
+  }
+  if (!localStorage.Computer) {
+    compWins.innerText = 0;
+  } else {
   compWins.innerText = robot.retrieveWinsFromStorage()
+  }
 }
 
 function displayAnnoucement() {
