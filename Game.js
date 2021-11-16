@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.hasWinner = null;
+    this.winner = null;
     this.isDraw = false;
     this.type = null;
     this.humanPlayer = new Player("Human", "Face");
@@ -9,36 +9,35 @@ class Game {
   determineDraw() {
     if (this.humanPlayer.selection === this.roboPlayer.selection) {
       this.isDraw = true;
-      this.hasWinner = false;
-      displayDraw(this.humanPlayer.selection)
+      // displayDraw(this.humanPlayer.selection)
     } else {
       this.determineWinner()
     }
-    setTimeout(resetGame, 500)
+    setTimeout(resetGame, 3000)
   }
   determineWinner() {
     if (this.humanPlayer.selection === "rock" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "lizard")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "paper" && (this.roboPlayer.selection === "rock" || this.roboPlayer.selection === "alien")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "scissors" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "lizard")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "lizard" && (this.roboPlayer.selection === "paper" || this.roboPlayer.selection === "alien")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else if (this.humanPlayer.selection === "alien" && (this.roboPlayer.selection === "scissors" || this.roboPlayer.selection === "rock")) {
-      this.hasWinner = true;
+      this.winner = "Human";
       this.updateWins(human)
     } else {
-      this.hasWinner = true;
+      this.winner = "Computer";
       this.updateWins(robot)
     }
   }
   updateWins(player) {
-    if (this.hasWinner) {
+    if (this.winner) {
     player.wins++
     player.saveWinsToStorage()
     var playerWins = player.retrieveWinsFromStorage()

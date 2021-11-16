@@ -33,6 +33,7 @@ function getRandomIndex(array) {
 }
 
 function show(elements) {
+  console.log("show")
   for (var i =  0; i < elements.length; i++){
     elements[i].classList.remove("hidden");
   }
@@ -83,6 +84,7 @@ function playGame() {
   displayCompChoice()
   currentGame.determineDraw()
   displayWins()
+  displayAnnoucement()
 }
 
 function displayCompChoice() {
@@ -94,11 +96,22 @@ function displayWins() {
   compWins.innerText = robot.retrieveWinsFromStorage()
 }
 
+function displayAnnoucement() {
+  if (currentGame.winner === "Human" ) {
+    subTitle.innerText =  `Human wins!`
+  } else if (currentGame.winner === "Computer") {
+    subTitle.innerText =  `Computer wins!`
+  }  else {
+    subTitle.innerText =  `It's a draw`
+
+  }
+}
+
 function displayDraw(selectedIcon) {
   subTitle.innerText = "It's a draw!"
-  gameBoard.innerHTML += `<button class="player-icons">
-    <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
-  </button>`
+  // gameBoard.innerHTML += `<button class="player-icons">
+  //   <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
+  // </button>`
 }
 
 function resetGame() {
