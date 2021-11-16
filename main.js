@@ -48,9 +48,7 @@ function hide(elements) {
 
 function showIt(element) {
   var icon = element.toString();
-  console.log(icon)
   var newIcon = document.getElementById(icon);
-  console.log(newIcon)
   newIcon.classList.remove("hidden");
 
   // console.log("1", arrayOfStrings)
@@ -92,7 +90,7 @@ function playGame() {
   robot.robotTurn()
   displayCompChoice()
   currentGame.determineWinner()
-  displayDraw(this.robot.selection)
+  // displayDraw(this.robot.selection)
   displayWins()
   displayAnnoucement()
   setTimeout(resetGame, 1500)
@@ -108,12 +106,13 @@ function displayWins() {
 }
 
 function displayAnnoucement() {
-  if (!this.isDraw && currentGame.winner === "Human" ) {
+  if (currentGame.winner === "Human" ) {
     subTitle.innerText =  `👩‍💻 Human wins! 👩‍💻`
-  } else if (!this.isDraw && currentGame.winner === "Computer") {
+  } else if (currentGame.winner === "Computer") {
     subTitle.innerText =  `💻 Computer wins! 💻`
   }  else {
     subTitle.innerText =  `It's a draw`
+    displayDraw(robot.selection)
   }
 }
 
