@@ -31,7 +31,7 @@ class Game {
       this.hasWinner = true;
       this.updateWins(robot)
     }
-    // setTimeout(resetGame, 1000)
+    setTimeout(resetGame, 1000)
   }
   updateWins(player) {
     if (this.hasWinner) {
