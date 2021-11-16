@@ -50,13 +50,6 @@ function showIt(element) {
   var icon = element.toString();
   var newIcon = document.getElementById(icon);
   newIcon.classList.remove("hidden");
-
-  // console.log("1", arrayOfStrings)
-  // for (var i = 0; i < arrayOfStrings.length; i++) {
-  //   var element = document.getElementById(arrayOfStrings[i]);
-  //   element.classList.remove("hidden");
-  //   console.log("2",  element)
-  // }
 }
 
 //Hide and Display  Home Page
