@@ -45,11 +45,20 @@ function hide(elements) {
   }
 }
 
-function showIt(arrayOfStrings) {
-  for (var i = 0; i < arrayOfStrings.length; i++) {
-    var element = document.getElementById(arrayOfStrings[i]);
-    element.classList.remove("hidden");
-  }
+
+function showIt(element) {
+  var icon = element.toString();
+  console.log(icon)
+  var newIcon = document.getElementById(icon);
+  console.log(newIcon)
+  newIcon.classList.remove("hidden");
+
+  // console.log("1", arrayOfStrings)
+  // for (var i = 0; i < arrayOfStrings.length; i++) {
+  //   var element = document.getElementById(arrayOfStrings[i]);
+  //   element.classList.remove("hidden");
+  //   console.log("2",  element)
+  // }
 }
 
 //Hide and Display  Home Page
