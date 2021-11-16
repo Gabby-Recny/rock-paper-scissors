@@ -143,6 +143,7 @@ function resetDraw() {
 function resetGame() {
   resetDraw()
   show([changeGameBtn])
+  currentGame.resetSelections()
   if (currentGame.type === "classic") {
     displayClassic()
   } else {
