@@ -12,7 +12,7 @@ var classicGameBtn = document.getElementById("classicChoice");
 var difficultGameBtn = document.getElementById("difficultChoice")
 var changeGameBtn = document.getElementById("changeGameBtn");
 var gameBoard = document.getElementById("gameBoard");
-var drawArea =  document.getElementById("drawArea")
+var drawArea = document.getElementById("drawArea")
 
 var currentGame;
 var human;
@@ -34,7 +34,7 @@ function getRandomIndex(array) {
 }
 
 function show(elements) {
-  for (var i =  0; i < elements.length; i++){
+  for (var i = 0; i < elements.length; i++) {
     elements[i].classList.remove("hidden");
   }
 }
@@ -45,8 +45,7 @@ function hide(elements) {
   }
 }
 
-
-function showIt(element) {
+function showString(element) {
   var icon = element.toString();
   var newIcon = document.getElementById(icon);
   newIcon.classList.remove("hidden");
@@ -58,12 +57,12 @@ function hideHomePage() {
 }
 
 function showHomePage() {
-  subTitle.innerText = "Welcome to the Jungle"
+  subTitle.innerText = "Choose Your Game"
   show([classicGameBtn, difficultGameBtn]);
   hide([classicIcons, difficultIcons, changeGameBtn]);
 }
 
-//Main Game
+//Display  Board
 function displayClassic() {
   hideHomePage()
   currentGame.type = "classic";
@@ -78,19 +77,27 @@ function displayDiff() {
   show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
 }
 
+//Main Game
 function playGame() {
+  takeTurns()
+  displayGame()
+  setTimeout(resetGame, 1000)
+}
+
+function takeTurns() {
   human.humanTurn()
   robot.robotTurn()
   displayCompChoice()
+}
+
+function  displayGame() {
   currentGame.determineWinner()
-  // displayDraw(this.robot.selection)
   displayWins()
   displayAnnoucement()
-  setTimeout(resetGame, 1500)
 }
 
 function displayCompChoice() {
-  showIt([robot.selection])
+  showString(robot.selection)
 }
 
 function displayWins() {
@@ -102,34 +109,35 @@ function displayWins() {
   if (!localStorage.Computer) {
     compWins.innerText = 0;
   } else {
-  compWins.innerText = robot.retrieveWinsFromStorage()
+    compWins.innerText = robot.retrieveWinsFromStorage()
   }
 }
 
 function displayAnnoucement() {
-  if (currentGame.winner === "Human" ) {
-    subTitle.innerText =  `👩‍💻 Human wins! 👩‍💻`
+  if (currentGame.winner === "Human") {
+    subTitle.innerText = `👩‍💻 Human wins! 👩‍💻`
   } else if (currentGame.winner === "Computer") {
-    subTitle.innerText =  `💻 Computer wins! 💻`
-  }  else {
-    subTitle.innerText =  `It's a draw`
+    subTitle.innerText = `💻 Computer wins! 💻`
+  } else {
+    subTitle.innerText = `It's a draw`
     displayDraw(human.selection)
   }
 }
 
 function displayDraw(selectedIcon) {
   if (currentGame.isDraw) {
-  show([drawArea])
-  drawArea.innerHTML += `<button class="player-buttons">
+    show([drawArea])
+    drawArea.innerHTML += `<button class="player-buttons">
     <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
   </button>`
   }
 }
 
+//Reset game board
 function resetDraw() {
-    hide([drawArea])
-    drawArea.innerHTML = ""
-    currentGame.isDraw = false;
+  hide([drawArea])
+  drawArea.innerHTML = ""
+  currentGame.isDraw = false;
 }
 
 function resetGame() {
@@ -143,15 +151,16 @@ function resetGame() {
 }
 
 //Page Refresh
+//********
 function displayPrevWins() {
   currentGame = new Game();
   human = currentGame.humanPlayer;
   robot = currentGame.roboPlayer;
   displayWins()
-  subTitle.innerText = "Welcome to the Jungle"
+  subTitle.innerText = "Choose Your Game"
 }
 
-//Select Icons
+//Fighter Icons
 function selectPaper() {
   hide([scissors, rock, lizard, alien])
   playGame()
@@ -171,7 +180,8 @@ function selectRock() {
   hide([scissors, paper, lizard, alien]);
   playGame()
 }
+
 function selectScissors() {
-  hide([ paper, lizard, alien, rock])
+  hide([paper, lizard, alien, rock])
   playGame()
 }
