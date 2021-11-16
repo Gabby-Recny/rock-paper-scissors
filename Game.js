@@ -40,4 +40,8 @@ class Game {
     var playerWins = player.retrieveWinsFromStorage()
     }
   }
+  resetSelections() {
+    this.humanPlayer.selection = null;
+    this.roboPlayer.selection = null;
+  }
 }
