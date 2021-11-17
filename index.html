@@ -10,19 +10,19 @@
   </head>
   <body>
     <header>
-        <h1>Rock Paper Scissors & Friends</h1>
-        <h2>Choose Your Game</h2>
+        <h1 class="headings">Rock Paper Scissors & Friends</h1>
+        <h3 class="headings" id="subTitle">Choose Your Game</h3>
     </header>
     <aside class="left-side">
-      <h3>😸 Kitty 😸 </h3>
-      <h3 id="humanWins">0</h3>
+      <h3 class="headings">😸 Kitty 😸 </h3>
+      <h3 class="headings" id="humanWins">0</h3>
       <button class="change-game-btn hidden" id="changeGameBtn">Change Game?</button>
     </aside>
     <main>
       <section class="game-board"  id="gameBoard">
-        <button class="game-choice-btn classic-choice" id="classicChoice" value="classicGame">
+        <button class="game-choice-btn" id="classicChoice" value="classicGame">
           <div>
-            <p class="game-title title-classic">Classic Choice</p>
+            <p class="game-title">Classic Choice</p>
             <p>Rock > scissors</p>
   	        <p>Scissors > Paper</p>
   	        <p>Paper > Rock</p>
@@ -61,8 +61,8 @@
       </section>
     </main>
     <aside class="right-side">
-      <h3>💻 Computer 💻</h3>
-      <h3 id="compWins">0</h3>
+      <h3 class="headings">💻 Computer 💻</h3>
+      <h3 class="headings" id="compWins">0</h3>
     </aside>
     <script src="Player.js"></script>
     <script src="Game.js"></script>
