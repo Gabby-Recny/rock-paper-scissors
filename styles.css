@@ -25,18 +25,15 @@ header {
   width: 100%;
 }
 
-h2 {
-  font-size: 35px;
+h1 {
+  font-size: 63px;
   margin-top: 1.8%;
   margin-bottom: -1%;
 }
 
-h4  {
+h2  {
   margin: 0px;
-}
-
-h3 {
-  font-size: 21px;
+  font-size: 30px;
 }
 
 main {
@@ -62,14 +59,15 @@ aside {
 }
 
 header,
-h4,
-h5 {
+h2,
+h3 {
   color: white;
   text-align: center;
 }
 
-h5 {
-  font-size: 17px;
+h3 {
+  font-size: 28px;
+  margin: 4%;
 }
 
 .game-board {
@@ -100,7 +98,7 @@ h5 {
   height: 8%;
   width: 80%;
   font-size: 18px;
-  margin:5%;
+  margin: 5%;
 }
 
 .game-choice-btn {
@@ -150,8 +148,8 @@ h5 {
   margin: 0px;
   padding:  0px;
   cursor: pointer;
-  width: 100px;
-  height: 100px;
+  width: 175px;
+  height: 175px;
 }
 
 img {
