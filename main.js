@@ -109,7 +109,7 @@ function displayAnnoucement() {
   if (currentGame.winner === "Human" ) {
     subTitle.innerText =  `😸 La Gatita gana! 😸`
   } else if (currentGame.winner === "Computer") {
-    subTitle.innerText =  `💻 La computadora gana! 💻`
+    subTitle.innerText =  `💻 Autómata gana! 💻`
   }  else {
     subTitle.innerText =  `Es un empate!`
     displayDraw(human.selection)
