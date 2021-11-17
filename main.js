@@ -5,7 +5,7 @@ var alien = document.getElementById("alien");
 var lizard = document.getElementById("lizard");
 var humanWins = document.getElementById("humanWins");
 var compWins = document.getElementById("compWins");
-var subTitle = document.querySelector("h4");
+var subTitle = document.getElementById("subTitle");
 var classicIcons = document.getElementById("classicPlayerIcons");
 var difficultIcons = document.getElementById("difficultPlayerIcons");
 var classicGameBtn = document.getElementById("classicChoice");
@@ -34,7 +34,7 @@ function getRandomIndex(array) {
 }
 
 function show(elements) {
-  for (var i = 0; i < elements.length; i++) {
+  for (var i =  0; i < elements.length; i++){
     elements[i].classList.remove("hidden");
   }
 }
@@ -45,7 +45,8 @@ function hide(elements) {
   }
 }
 
-function showString(element) {
+
+function showIt(element) {
   var icon = element.toString();
   var newIcon = document.getElementById(icon);
   newIcon.classList.remove("hidden");
@@ -62,7 +63,7 @@ function showHomePage() {
   hide([classicIcons, difficultIcons, changeGameBtn]);
 }
 
-//Display  Board
+//Main Game
 function displayClassic() {
   hideHomePage()
   currentGame.type = "classic";
@@ -77,27 +78,18 @@ function displayDiff() {
   show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
 }
 
-//Main Game
 function playGame() {
-  takeTurns()
-  displayGame()
-  setTimeout(resetGame, 1000)
-}
-
-function takeTurns() {
   human.humanTurn()
   robot.robotTurn()
   displayCompChoice()
-}
-
-function  displayGame() {
   currentGame.determineWinner()
   displayWins()
   displayAnnoucement()
+  setTimeout(resetGame, 1500)
 }
 
 function displayCompChoice() {
-  showString(robot.selection)
+  showIt([robot.selection])
 }
 
 function displayWins() {
@@ -109,41 +101,39 @@ function displayWins() {
   if (!localStorage.Computer) {
     compWins.innerText = 0;
   } else {
-    compWins.innerText = robot.retrieveWinsFromStorage()
+  compWins.innerText = robot.retrieveWinsFromStorage()
   }
 }
 
 function displayAnnoucement() {
-  if (currentGame.winner === "Human") {
-    subTitle.innerText = `👩‍💻 Human wins! 👩‍💻`
+  if (currentGame.winner === "Human" ) {
+    subTitle.innerText =  `😸 Kitty wins! 😸`
   } else if (currentGame.winner === "Computer") {
-    subTitle.innerText = `💻 Computer wins! 💻`
-  } else {
-    subTitle.innerText = `It's a draw`
+    subTitle.innerText =  `💻 Computer wins! 💻`
+  }  else {
+    subTitle.innerText =  `It's a draw`
     displayDraw(human.selection)
   }
 }
 
 function displayDraw(selectedIcon) {
   if (currentGame.isDraw) {
-    show([drawArea])
-    drawArea.innerHTML += `<button class="player-buttons">
+  show([drawArea])
+  drawArea.innerHTML += `<button class="player-buttons">
     <img src="assets/${selectedIcon}.png" alt="${selectedIcon}" id=${selectedIcon}>
   </button>`
   }
 }
 
-//Reset game board
 function resetDraw() {
-  hide([drawArea])
-  drawArea.innerHTML = ""
-  currentGame.isDraw = false;
+    hide([drawArea])
+    drawArea.innerHTML = ""
+    currentGame.isDraw = false;
 }
 
 function resetGame() {
   resetDraw()
   show([changeGameBtn])
-  currentGame.resetSelections()
   if (currentGame.type === "classic") {
     displayClassic()
   } else {
@@ -152,7 +142,6 @@ function resetGame() {
 }
 
 //Page Refresh
-//********
 function displayPrevWins() {
   currentGame = new Game();
   human = currentGame.humanPlayer;
@@ -161,7 +150,7 @@ function displayPrevWins() {
   subTitle.innerText = "Choose Your Game"
 }
 
-//Fighter Icons
+//Select Icons
 function selectPaper() {
   hide([scissors, rock, lizard, alien])
   playGame()
@@ -181,8 +170,7 @@ function selectRock() {
   hide([scissors, paper, lizard, alien]);
   playGame()
 }
-
 function selectScissors() {
-  hide([paper, lizard, alien, rock])
+  hide([ paper, lizard, alien, rock])
   playGame()
 }
