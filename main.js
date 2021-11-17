@@ -58,7 +58,7 @@ function hideHomePage() {
 }
 
 function showHomePage() {
-  subTitle.innerText = "Choose Your Game"
+  subTitle.innerText = "Elige Tu Juego"
   show([classicGameBtn, difficultGameBtn]);
   hide([classicIcons, difficultIcons, changeGameBtn]);
 }
@@ -107,11 +107,11 @@ function displayWins() {
 
 function displayAnnoucement() {
   if (currentGame.winner === "Human" ) {
-    subTitle.innerText =  `😸 Kitty wins! 😸`
+    subTitle.innerText =  `😸 La Gatita gana! 😸`
   } else if (currentGame.winner === "Computer") {
-    subTitle.innerText =  `💻 Computer wins! 💻`
+    subTitle.innerText =  `💻 La computadora gana! 💻`
   }  else {
-    subTitle.innerText =  `It's a draw`
+    subTitle.innerText =  `Es un empate!`
     displayDraw(human.selection)
   }
 }
@@ -147,7 +147,7 @@ function displayPrevWins() {
   human = currentGame.humanPlayer;
   robot = currentGame.roboPlayer;
   displayWins()
-  subTitle.innerText = "Choose Your Game"
+  subTitle.innerText = "Elige Tu Juego"
 }
 
 //Select Icons
