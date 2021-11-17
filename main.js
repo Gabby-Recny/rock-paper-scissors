@@ -58,7 +58,7 @@ function hideHomePage() {
 }
 
 function showHomePage() {
-  subTitle.innerText = "Elige Tu Juego"
+  subTitle.innerText = "Choose Your Game"
   show([classicGameBtn, difficultGameBtn]);
   hide([classicIcons, difficultIcons, changeGameBtn]);
 }
@@ -67,14 +67,14 @@ function showHomePage() {
 function displayClassic() {
   hideHomePage()
   currentGame.type = "classic";
-  subTitle.innerText = "Elige Tu Luchadora!"
+  subTitle.innerText = "Pick Your Fighter!"
   show([classicIcons, rock, paper, scissors])
 }
 
 function displayDiff() {
   hideHomePage()
   currentGame.type = "difficult"
-  subTitle.innerText = "Elige Tu Luchadora!"
+  subTitle.innerText = "Pick Your Fighter!"
   show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
 }
 
@@ -107,11 +107,11 @@ function displayWins() {
 
 function displayAnnoucement() {
   if (currentGame.winner === "Human" ) {
-    subTitle.innerText =  `😸 La Gatita gana! 😸`
+    subTitle.innerText =  `😸 Kitty wins! 😸`
   } else if (currentGame.winner === "Computer") {
-    subTitle.innerText =  `💻 La computadora gana! 💻`
+    subTitle.innerText =  `💻 Computer wins! 💻`
   }  else {
-    subTitle.innerText =  `Es un empate!`
+    subTitle.innerText =  `It's a tie!`
     displayDraw(human.selection)
   }
 }
@@ -147,7 +147,7 @@ function displayPrevWins() {
   human = currentGame.humanPlayer;
   robot = currentGame.roboPlayer;
   displayWins()
-  subTitle.innerText = "Elige Tu Juego"
+  subTitle.innerText = "Choose Your Game"
 }
 
 //Select Icons
