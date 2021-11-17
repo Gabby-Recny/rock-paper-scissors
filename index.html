@@ -10,27 +10,27 @@
   </head>
   <body>
     <header>
-        <h2>Cat Cat Cat</h2>
-        <h4>Choose Your Game</h4>
+        <h1>Rock Paper Scissors & Friends</h1>
+        <h2>Choose Your Game</h2>
     </header>
     <aside class="left-side">
-      <h5>👩‍💻 Human 👩‍💻</h5>
-      <h5 id="humanWins">0</h5>
+      <h3>😸 Kitty 😸 </h3>
+      <h3 id="humanWins">0</h3>
       <button class="change-game-btn hidden" id="changeGameBtn">Change Game?</button>
     </aside>
     <main>
       <section class="game-board"  id="gameBoard">
-        <button class="game-choice-btn" class="classic-choice" id="classicChoice" value="classicGame">
-          <div class="game-options classic-choice">
-            <p class="game-title">Classic Choice</p>
+        <button class="game-choice-btn classic-choice" id="classicChoice" value="classicGame">
+          <div>
+            <p class="game-title title-classic">Classic Choice</p>
             <p>Rock > scissors</p>
   	        <p>Scissors > Paper</p>
   	        <p>Paper > Rock</p>
           </div>
         </button>
-        <button class="game-choice-btn" class="difficult-choice" id="difficultChoice" value="difficultGame">
-          <div class="game-options difficult-choice">
-            <p class="game-title">Difficult Choice</p>
+        <button class="game-choice-btn difficult-choice" id="difficultChoice" value="difficultGame">
+          <div class="difficult-choice">
+            <p class="game-title title-difficult">Difficult Choice</p>
             <p>Rock > Scissors & Lizards</p>
             <p>Paper > Rock & Alien</p>
             <p>Scissors > Paper & Lizard</p>
@@ -61,8 +61,8 @@
       </section>
     </main>
     <aside class="right-side">
-      <h5>💻 Computer 💻</h5>
-      <h5 id="compWins">0</h5>
+      <h3>💻 Computer 💻</h3>
+      <h3 id="compWins">0</h3>
     </aside>
     <script src="Player.js"></script>
     <script src="Game.js"></script>
