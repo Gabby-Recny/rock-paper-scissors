@@ -67,14 +67,14 @@ function showHomePage() {
 function displayClassic() {
   hideHomePage()
   currentGame.type = "classic";
-  subTitle.innerText = "Pick Your Fighter!"
+  subTitle.innerText = "Elige Tu Luchadora!"
   show([classicIcons, rock, paper, scissors])
 }
 
 function displayDiff() {
   hideHomePage()
   currentGame.type = "difficult"
-  subTitle.innerText = "Pick Your Fighter!"
+  subTitle.innerText = "Elige Tu Luchadora!"
   show([classicIcons, difficultIcons, rock, paper, scissors, alien, lizard]);
 }
 
