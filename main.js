@@ -85,7 +85,7 @@ function playGame() {
   currentGame.determineWinner()
   displayWins()
   displayAnnoucement()
-  setTimeout(resetGame, 1500)
+  setTimeout(resetGame, 1000)
 }
 
 function displayCompChoice() {
